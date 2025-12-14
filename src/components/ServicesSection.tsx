@@ -28,11 +28,11 @@ export const ServicesSection = () => {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6">
-            <span className="text-sm font-mono text-primary">// Our Services</span>
+          <div className="inline-flex items-center gap-2 glass-gold px-4 py-2 rounded-full mb-6">
+            <span className="text-sm font-mono text-gold">// Our Services</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            What We <span className="text-gradient">Build & Fix</span>
+            What We <span className="text-gradient-premium">Build & Fix</span>
           </h2>
           <p className="text-muted-foreground text-lg">
             Comprehensive tech solutions tailored to your needs

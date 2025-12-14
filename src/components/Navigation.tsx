@@ -32,8 +32,8 @@ export const Navigation = () => {
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         <a href="#" className="flex items-center gap-2">
-          <span className="text-2xl font-bold text-gradient">ARI-gram</span>
-          <span className="text-sm font-mono text-muted-foreground hidden sm:inline">
+          <span className="text-2xl font-bold text-gradient-premium">ARI-gram</span>
+          <span className="text-sm font-mono text-gold/70 hidden sm:inline">
             Technologies
           </span>
         </a>
