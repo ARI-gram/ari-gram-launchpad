@@ -41,11 +41,11 @@ export const ProcessSection = () => {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6">
-            <span className="text-sm font-mono text-primary">// Our Process</span>
+          <div className="inline-flex items-center gap-2 glass-gold px-4 py-2 rounded-full mb-6">
+            <span className="text-sm font-mono text-gold">// Our Process</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            How We <span className="text-gradient">Work</span>
+            How We <span className="text-gradient-premium">Work</span>
           </h2>
           <p className="text-muted-foreground text-lg">
             A clear, collaborative process that delivers results
@@ -65,7 +65,7 @@ export const ProcessSection = () => {
               >
                 <div className="glass rounded-2xl p-6 h-full hover:-translate-y-2 transition-all duration-300">
                   {/* Step number */}
-                  <div className="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-primary flex items-center justify-center text-sm font-bold text-primary-foreground shadow-button">
+                  <div className="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-gold flex items-center justify-center text-sm font-bold text-gold-foreground shadow-button-gold">
                     {step.step}
                   </div>
                   

@@ -31,11 +31,11 @@ export const PortfolioSection = () => {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6">
-            <span className="text-sm font-mono text-primary">// Our Work</span>
+          <div className="inline-flex items-center gap-2 glass-gold px-4 py-2 rounded-full mb-6">
+            <span className="text-sm font-mono text-gold">// Our Work</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            Featured <span className="text-gradient">Projects</span>
+            Featured <span className="text-gradient-premium">Projects</span>
           </h2>
           <p className="text-muted-foreground text-lg">
             A selection of our recent work and solutions
@@ -60,7 +60,7 @@ export const PortfolioSection = () => {
                 
                 {/* Category Badge */}
                 <div className="absolute top-4 left-4">
-                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-primary/90 text-primary-foreground">
+                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-gold/90 text-gold-foreground">
                     {project.category}
                   </span>
                 </div>
@@ -102,7 +102,7 @@ export const PortfolioSection = () => {
         {/* CTA */}
         <div className="text-center mt-12">
           <p className="text-muted-foreground mb-4">Want to see more of our work?</p>
-          <Button variant="heroOutline" asChild>
+          <Button variant="goldOutline" asChild>
             <a href="#contact">Get in Touch</a>
           </Button>
         </div>

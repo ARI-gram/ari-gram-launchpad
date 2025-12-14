@@ -16,13 +16,13 @@ export const AboutSection = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
           <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full">
-              <span className="text-sm font-mono text-primary">// About Us</span>
+            <div className="inline-flex items-center gap-2 glass-gold px-4 py-2 rounded-full">
+              <span className="text-sm font-mono text-gold">// About Us</span>
             </div>
             
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
               Solving Tech Problems for{" "}
-              <span className="text-gradient">Real People</span>
+              <span className="text-gradient-premium">Real People</span>
             </h2>
             
             <p className="text-lg text-muted-foreground leading-relaxed">
@@ -39,8 +39,8 @@ export const AboutSection = () => {
             </p>
 
             <div className="flex items-center gap-4 pt-4">
-              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
-                <Code2 className="w-6 h-6 text-primary" />
+              <div className="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center">
+                <Code2 className="w-6 h-6 text-gold" />
               </div>
               <div>
                 <p className="font-semibold">Developer-First Approach</p>
@@ -57,8 +57,8 @@ export const AboutSection = () => {
                 className="glass rounded-2xl p-6 hover:-translate-y-1 transition-transform duration-300"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <stat.icon className="w-8 h-8 text-primary mb-4" />
-                <p className="text-3xl font-bold text-gradient">{stat.value}</p>
+                <stat.icon className="w-8 h-8 text-gold mb-4" />
+                <p className="text-3xl font-bold text-gradient-gold">{stat.value}</p>
                 <p className="text-sm text-muted-foreground mt-1">{stat.label}</p>
               </div>
             ))}

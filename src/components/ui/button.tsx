@@ -18,6 +18,8 @@ const buttonVariants = cva(
         hero: "bg-primary text-primary-foreground font-semibold shadow-[0_4px_14px_hsl(199_89%_48%_/_0.4)] hover:shadow-[0_0_60px_hsl(199_89%_48%_/_0.3)] hover:-translate-y-1 hover:bg-primary/90",
         heroOutline: "border-2 border-primary/50 bg-transparent text-foreground hover:bg-primary/10 hover:border-primary hover:-translate-y-1",
         glass: "bg-card/80 backdrop-blur-xl border border-border/50 text-foreground hover:bg-card/90 hover:-translate-y-0.5",
+        gold: "bg-gold text-gold-foreground font-semibold shadow-[0_4px_14px_hsl(45_93%_47%_/_0.35)] hover:shadow-[0_0_60px_hsl(45_93%_47%_/_0.25)] hover:-translate-y-1 hover:bg-gold-light",
+        goldOutline: "border-2 border-gold/50 bg-transparent text-foreground hover:bg-gold/10 hover:border-gold hover:-translate-y-1",
       },
       size: {
         default: "h-10 px-4 py-2",
