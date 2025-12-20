@@ -24,20 +24,67 @@ export const ContactSection = () => {
     message: "",
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
+    // Validate form
+    if (!formData.name || !formData.email || !formData.message) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in all required fields.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    // EmailJS Configuration
+    const EMAILJS_SERVICE_ID = "service_s8yjkli";
+    const EMAILJS_TEMPLATE_ID = "template_5k5la8l";
+    const EMAILJS_PUBLIC_KEY = "7ByFLFdrTxP2BF5wv";
 
-    toast({
-      title: "Message Sent!",
-      description: "We'll get back to you as soon as possible.",
-    });
+    try {
+      // Prepare template parameters
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        service_type: serviceTypes.find(s => s.value === formData.service)?.label || formData.service,
+        message: formData.message,
+        to_email: "ari.gram.technologies@gmail.com",
+      };
 
-    setFormData({ name: "", email: "", service: "", message: "" });
-    setIsSubmitting(false);
+      // Send email using EmailJS
+      const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          service_id: EMAILJS_SERVICE_ID,
+          template_id: EMAILJS_TEMPLATE_ID,
+          user_id: EMAILJS_PUBLIC_KEY,
+          template_params: templateParams,
+        }),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Message Sent! ✓",
+          description: "We'll get back to you as soon as possible.",
+        });
+        setFormData({ name: "", email: "", service: "", message: "" });
+      } else {
+        throw new Error("Failed to send message");
+      }
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      toast({
+        title: "Oops! Something went wrong",
+        description: "Please try again or contact us directly via WhatsApp.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (field: string, value: string) => {
@@ -128,7 +175,7 @@ export const ContactSection = () => {
           </div>
 
           {/* Contact Form */}
-          <form onSubmit={handleSubmit} className="glass rounded-2xl p-8 space-y-6">
+          <div className="glass rounded-2xl p-8 space-y-6">
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium">Name</label>
@@ -136,7 +183,6 @@ export const ContactSection = () => {
                   placeholder="Your name"
                   value={formData.name}
                   onChange={(e) => handleChange("name", e.target.value)}
-                  required
                   className="bg-secondary/50 border-border focus:border-primary"
                 />
               </div>
@@ -147,7 +193,6 @@ export const ContactSection = () => {
                   placeholder="your@email.com"
                   value={formData.email}
                   onChange={(e) => handleChange("email", e.target.value)}
-                  required
                   className="bg-secondary/50 border-border focus:border-primary"
                 />
               </div>
@@ -179,13 +224,12 @@ export const ContactSection = () => {
                 rows={5}
                 value={formData.message}
                 onChange={(e) => handleChange("message", e.target.value)}
-                required
                 className="bg-secondary/50 border-border focus:border-primary resize-none"
               />
             </div>
 
             <Button 
-              type="submit" 
+              onClick={handleSubmit}
               variant="gold" 
               size="lg" 
               className="w-full"
@@ -200,7 +244,7 @@ export const ContactSection = () => {
                 </>
               )}
             </Button>
-          </form>
+          </div>
         </div>
       </div>
     </section>
