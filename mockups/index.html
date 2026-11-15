@@ -36,7 +36,7 @@
 </div>
 <script>
   const PAGE = (new URLSearchParams(location.search).get('page') || 'homepage') + '.html';
-  const NAME = { homepage: 'Homepage', about: 'About Us', services: 'Services', solutions: 'Solutions' }[PAGE.replace('.html','')] || PAGE;
+  const NAME = { homepage: 'Homepage', about: 'About Us', services: 'Services', solutions: 'Solutions', industries: 'Industries' }[PAGE.replace('.html','')] || PAGE;
   document.querySelector('.top h1').textContent = 'ARI-GRAM Technologies · ' + NAME + ' mockup';
   document.querySelector('.top a').href = PAGE;
   document.querySelectorAll('.vp').forEach(vp => {

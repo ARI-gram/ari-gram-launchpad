@@ -23,4 +23,10 @@ export const images = {
   officeColleagues: (w = 1100) => unsplash("1573164574397-dd250bc8a598", w),
   shopCounter: (w = 1100) => unsplash("1687422808311-a776f467a468", w),
   stallPhone: (w = 1000) => unsplash("1687422809654-579d81c29d32", w),
+  nairobiSkyline: (w = 1920) => unsplash("1794390884172-0f5b0951af01", w),
+  cranesSite: (w = 1000) => unsplash("1741706527174-ebd2768ffc49", w),
+  shopkeeper: (w = 1000) => unsplash("1761370571806-886404629697", w),
+  grillCook: (w = 1000) => unsplash("1687422808277-2334638f09fb", w),
+  colleaguesMeeting: (w = 1000) => unsplash("1793697601868-d8770f76bc07", w),
+  tailorPhone: (w = 1000) => unsplash("1687422809069-0fa3546b8471", w),
 };

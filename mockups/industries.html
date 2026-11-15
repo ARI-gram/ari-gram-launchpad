@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Industries · ARI-GRAM Technologies</title>
+<link rel="icon" href="logo-mark.svg" type="image/svg+xml" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #092B59; --blue: #1256A0; --electric: #168BFA;
+    --ink: #141820; --coal: #0E1117; --sand: #F6F5F1; --amber: #D9952B;
+    --muted: #5B6170; --line: #E5E2DA;
+    --head: Manrope, system-ui, sans-serif; --body: Inter, system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--body); color: var(--ink); background: #fff; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, h4 { font-family: var(--head); line-height: 1.12; margin: 0; letter-spacing: -0.02em; }
+  p { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+  @media (min-width: 768px) { .wrap { padding: 0 32px; } }
+
+  .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: var(--head); font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--amber); }
+  .eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--amber); }
+  .title { font-size: clamp(30px, 4vw, 40px); font-weight: 800; margin-top: 16px; }
+  .lead { color: var(--muted); font-size: 16.5px; margin-top: 16px; }
+
+  .btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--head); font-weight: 700; font-size: 15px; padding: 12px 20px; border-radius: 8px; border: 1px solid transparent; white-space: nowrap; }
+  .btn-primary { background: var(--blue); color: #fff; }
+  .btn-light { background: #fff; color: var(--ink); }
+  .btn-ghost { border-color: rgba(255,255,255,.4); color: #fff; }
+
+  /* Header */
+  header { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.96); border-bottom: 1px solid var(--line); }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo svg { width: 36px; height: 36px; }
+  .logo b { display: block; font-family: var(--head); font-weight: 800; font-size: 19px; color: var(--navy); line-height: 1; }
+  .logo span { display: block; font-family: var(--head); font-weight: 700; font-size: 8px; letter-spacing: .42em; color: var(--blue); margin-top: 4px; line-height: 1; }
+  .logo.rev b { color: #fff; } .logo.rev span { color: #8CC4FF; }
+  .nav ul { display: none; list-style: none; margin: 0; padding: 0; gap: 28px; font-size: 14.5px; font-weight: 500; color: rgba(20,24,32,.7); }
+  .nav ul a.on { color: var(--ink); font-weight: 600; box-shadow: inset 0 -2px 0 var(--amber); padding-bottom: 6px; }
+  .nav .cta { display: none; }
+  .burger { width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 8px; display: grid; place-items: center; background: #fff; }
+  .burger i { width: 18px; height: 2px; background: var(--ink); box-shadow: 0 -6px 0 var(--ink), 0 6px 0 var(--ink); }
+  @media (min-width: 1024px) { .nav ul { display: flex; } .nav .cta { display: inline-flex; } .burger { display: none; } }
+
+  /* Page hero */
+  .phero { position: relative; color: #fff; background: var(--coal); overflow: hidden; }
+  .phero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .phero .ov { position: absolute; inset: 0; background: linear-gradient(100deg, rgba(12,16,24,.94) 0%, rgba(12,16,24,.82) 50%, rgba(9,43,89,.5) 100%); }
+  @media (max-width: 767px) { .phero .ov { background: linear-gradient(180deg, rgba(12,16,24,.86), rgba(12,16,24,.9)); } }
+  .phero .wrap { position: relative; padding-top: 72px; padding-bottom: 80px; }
+  .crumbs { font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 22px; }
+  .crumbs b { color: #fff; font-weight: 500; }
+  .phero h1 { font-size: clamp(36px, 5.5vw, 56px); font-weight: 800; max-width: 760px; margin-top: 18px; }
+  .phero p { color: rgba(255,255,255,.75); font-size: 17.5px; max-width: 600px; margin-top: 20px; }
+
+  section.b { padding: 80px 0; }
+  section.sand { background: var(--sand); }
+  @media (min-width: 1024px) { section.b { padding: 112px 0; } }
+
+  /* Story */
+  .story { display: grid; gap: 48px; }
+  @media (min-width: 1024px) { .story { grid-template-columns: 1.05fr 1fr; gap: 72px; align-items: center; } }
+  .story .copy p + p { margin-top: 16px; }
+  .story .copy p { color: rgba(20,24,32,.78); font-size: 16.5px; }
+  .story .pic { position: relative; }
+  .story .pic img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 12px; }
+  @media (min-width: 1024px) { .story .pic img { aspect-ratio: 5/6; } }
+  .quote { position: absolute; left: 20px; right: 20px; bottom: -28px; background: #fff; border-radius: 10px; padding: 20px 22px; box-shadow: 0 14px 34px rgba(20,24,32,.12); border-left: 3px solid var(--amber); }
+  .quote p { font-family: var(--head); font-weight: 700; font-size: 16px; color: var(--ink); line-height: 1.4; }
+  .quote small { display: block; margin-top: 8px; color: var(--muted); font-size: 13px; }
+  @media (min-width: 640px) { .quote { right: auto; max-width: 380px; } }
+
+  /* Timeline */
+  .timeline { margin-top: 40px; display: grid; gap: 0; border-top: 1px solid var(--line); }
+  .timeline > div { display: grid; grid-template-columns: 92px 1fr; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .timeline b { font-family: var(--head); color: var(--amber); font-size: 14px; }
+  .timeline h4 { font-size: 16.5px; } .timeline p { color: var(--muted); font-size: 14.5px; margin-top: 3px; }
+
+  /* Mission / vision */
+  .mv { display: grid; gap: 20px; margin-top: 48px; }
+  @media (min-width: 768px) { .mv { grid-template-columns: 1fr 1fr; } }
+  .mv article { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 32px; }
+  .mv article.dark { background: var(--coal); color: #fff; border-color: var(--coal); position: relative; overflow: hidden; }
+  .mv article.dark img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .28; }
+  .mv article.dark > * { position: relative; }
+  .mv small { font-family: var(--head); font-weight: 700; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--amber); }
+  .mv h3 { font-size: 24px; font-weight: 800; margin-top: 12px; line-height: 1.25; }
+  .mv p { margin-top: 14px; color: var(--muted); }
+  .mv .dark p { color: rgba(255,255,255,.75); }
+
+  /* Values */
+  .values { margin-top: 48px; display: grid; border-top: 2px solid var(--ink); }
+  @media (min-width: 768px) { .values { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .values { grid-template-columns: repeat(4, 1fr); } }
+  .values div { padding: 26px 24px 26px 0; border-bottom: 1px solid var(--line); }
+  @media (min-width: 1024px) { .values div { border-bottom: 0; border-right: 1px solid var(--line); padding: 28px 24px; } .values div:first-child { padding-left: 0; } .values div:last-child { border-right: 0; } }
+  .values span { font-family: var(--head); font-weight: 800; font-size: 34px; color: rgba(20,24,32,.12); line-height: 1; }
+  .values h4 { font-size: 18px; margin-top: 14px; } .values p { color: var(--muted); font-size: 14.5px; margin-top: 6px; }
+
+  /* Two ways */
+  .ways { display: grid; gap: 20px; margin-top: 48px; }
+  @media (min-width: 1024px) { .ways { grid-template-columns: 1fr 1fr; } }
+  .way { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: #fff; display: flex; flex-direction: column; }
+  .way .top { height: 190px; position: relative; }
+  .way .top img { width: 100%; height: 100%; object-fit: cover; }
+  .way .top .tag { position: absolute; top: 16px; left: 16px; background: #fff; border-radius: 99px; padding: 4px 12px; font-family: var(--head); font-weight: 700; font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; }
+  .way .body { padding: 28px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .way h3 { font-size: 22px; }
+  .way p { color: var(--muted); }
+  .way ul { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 8px; font-size: 14.5px; }
+  .way li { display: flex; gap: 10px; } .way li::before { content: "✓"; color: var(--amber); font-weight: 700; }
+  .way .more { margin-top: auto; padding-top: 10px; font-family: var(--head); font-weight: 700; font-size: 14px; color: var(--blue); }
+
+  /* Built so far */
+  .built { display: grid; gap: 40px; }
+  @media (min-width: 1024px) { .built { grid-template-columns: 1fr 1.3fr; gap: 72px; align-items: start; } }
+  .facts { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+  .facts div { padding: 26px 22px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #fff; }
+  .facts b { display: block; font-family: var(--head); font-weight: 800; font-size: 40px; color: var(--ink); line-height: 1; letter-spacing: -.02em; }
+  .facts b em { font-style: normal; color: var(--amber); }
+  .facts span { display: block; margin-top: 10px; font-size: 14px; color: var(--muted); }
+
+  /* Founder */
+  .founder { display: grid; gap: 32px; align-items: center; border: 1px solid var(--line); border-radius: 14px; padding: 24px; background: #fff; }
+  @media (min-width: 768px) { .founder { grid-template-columns: 260px 1fr; padding: 32px; gap: 40px; } }
+  .ph { aspect-ratio: 4/5; border-radius: 10px; background: repeating-linear-gradient(135deg, #EFEDE7 0 12px, #F6F5F1 12px 24px); display: grid; place-items: center; text-align: center; color: var(--muted); font-size: 13px; padding: 16px; border: 1px dashed #CFCAC0; }
+  .founder h3 { font-size: 26px; } .founder .role { color: var(--amber); font-family: var(--head); font-weight: 700; font-size: 14px; margin-top: 6px; }
+  .founder p { color: rgba(20,24,32,.78); margin-top: 16px; }
+  .note { display: inline-block; margin-top: 16px; font-size: 12.5px; background: #FFF6E6; color: #8A5A10; border: 1px solid #F2D9A8; border-radius: 6px; padding: 4px 10px; }
+
+  /* CTA */
+  .ctaband { position: relative; color: #fff; background: var(--coal); overflow: hidden; }
+  .ctaband img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .ctaband .ov { position: absolute; inset: 0; background: linear-gradient(100deg, rgba(12,16,24,.94), rgba(12,16,24,.8) 50%, rgba(9,43,89,.5)); }
+  @media (max-width: 767px) { .ctaband .ov { background: linear-gradient(180deg, rgba(12,16,24,.86), rgba(12,16,24,.9)); } }
+  .ctaband .wrap { position: relative; padding-top: 88px; padding-bottom: 88px; }
+  .ctaband h2 { font-size: clamp(32px, 4.5vw, 46px); font-weight: 800; max-width: 640px; margin-top: 16px; }
+  .ctaband p { color: rgba(255,255,255,.75); font-size: 17px; max-width: 520px; margin-top: 16px; }
+  .ctaband .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+
+  footer { background: var(--coal); color: rgba(255,255,255,.6); padding: 64px 0 32px; font-size: 14.5px; }
+  .fg { display: grid; gap: 40px; }
+  @media (min-width: 768px) { .fg { grid-template-columns: 1.5fr 1fr 1fr 1.2fr; } }
+  footer h5 { font-family: var(--head); color: #fff; font-size: 14px; margin: 0 0 16px; }
+  footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  .legal { margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.1); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: 13px; }
+
+  /* Industries page */
+  .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 40px; }
+  @media (min-width: 1024px) { .tiles { grid-template-columns: repeat(5, 1fr); } }
+  .tile { border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid var(--line); display: flex; flex-direction: column; }
+  .tile .tph { aspect-ratio: 4/3; overflow: hidden; }
+  .tile .tph img { width: 100%; height: 100%; object-fit: cover; }
+  .tile .tbd { padding: 14px 16px 16px; }
+  .tile b { display: block; font-family: var(--head); font-size: 16px; }
+  .tile small { color: var(--muted); font-size: 13px; }
+  .tiles .tile:last-child { grid-column: span 2; }
+  @media (min-width: 1024px) { .tiles .tile:last-child { grid-column: auto; } }
+
+  .ind { display: grid; gap: 40px; padding: 72px 0; border-bottom: 1px solid var(--line); align-items: start; }
+  .ind:last-child { border-bottom: 0; }
+  @media (min-width: 1024px) { .ind { grid-template-columns: 1fr 1.1fr; gap: 72px; padding: 104px 0; } .ind.flip .iph { order: 2; } }
+  .iph { position: relative; }
+  .iph img { width: 100%; aspect-ratio: 4/3.3; object-fit: cover; border-radius: 14px; }
+  @media (min-width: 1024px) { .iph { position: sticky; top: 96px; } }
+  .ind h2 { font-size: clamp(28px, 3.6vw, 36px); font-weight: 800; margin-top: 14px; }
+  .ind .intro { color: rgba(20,24,32,.78); font-size: 16.5px; margin-top: 14px; }
+  .cols { display: grid; gap: 24px; margin-top: 28px; }
+  @media (min-width: 640px) { .cols { grid-template-columns: 1fr 1fr; } }
+  .cols h4 { font-family: var(--head); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); padding-bottom: 10px; border-bottom: 2px solid var(--ink); }
+  .cols .help h4 { border-bottom-color: var(--amber); }
+  .cols ul { list-style: none; padding: 0; margin: 0; }
+  .cols li { padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 14.5px; display: flex; gap: 10px; }
+  .cols .pain li::before { content: "–"; color: var(--muted); }
+  .cols .help li::before { content: "✓"; color: var(--amber); font-weight: 700; }
+  .proof { margin-top: 26px; }
+  .proof h4 { font-family: var(--head); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .chip { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: #fff; border-radius: 99px; padding: 7px 14px; font-size: 14px; font-weight: 500; }
+  .chip small { font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; border-radius: 99px; padding: 2px 8px; }
+  .chip small.live { background: #E3F5EA; color: #17733F; }
+  .chip small.dev { background: #FFF4E0; color: #8A5A10; }
+  .chip small.soon { background: #EEF2F7; color: #3A4A63; }
+  .ind .actions { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; margin-top: 28px; }
+  .link { font-family: var(--head); font-weight: 700; font-size: 14px; color: var(--blue); }
+
+  .other { display: grid; gap: 32px; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 32px 24px; }
+  @media (min-width: 1024px) { .other { grid-template-columns: 1fr 1.2fr; padding: 48px; gap: 56px; align-items: center; } }
+  .other h2 { font-size: clamp(26px, 3.4vw, 34px); font-weight: 800; margin-top: 12px; }
+  .other p.l { color: var(--muted); margin-top: 12px; }
+  .osteps { display: grid; gap: 0; border-top: 1px solid var(--line); }
+  .osteps > div { display: grid; grid-template-columns: 44px 1fr; gap: 12px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .osteps b { font-family: var(--head); color: var(--amber); font-size: 14px; }
+  .osteps h4 { font-size: 16px; } .osteps p { color: var(--muted); font-size: 14px; margin-top: 2px; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <g id="mark"><polygon points="4,58 27,5 37,5 16,58" fill="#092B59"/><polygon points="39,9 60,58 48,58 34,21" fill="#1256A0"/><rect x="19" y="39" width="22" height="7" rx="3.5" fill="#168BFA"/><circle cx="47" cy="42.5" r="4.5" fill="#168BFA"/></g>
+  <g id="mark-rev"><polygon points="4,58 27,5 37,5 16,58" fill="#fff"/><polygon points="39,9 60,58 48,58 34,21" fill="#8CC4FF"/><rect x="19" y="39" width="22" height="7" rx="3.5" fill="#168BFA"/><circle cx="47" cy="42.5" r="4.5" fill="#168BFA"/></g>
+</defs></svg>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="homepage.html"><svg viewBox="0 0 64 64"><use href="#mark"/></svg><div><b>ARI-GRAM</b><span>TECHNOLOGIES</span></div></a>
+    <ul>
+      <li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="solutions.html">Solutions</a></li>
+      <li><a class="on" href="#">Industries</a></li><li><a href="#">Our Work</a></li><li><a href="#">Contact</a></li>
+    </ul>
+    <a class="btn btn-primary cta" href="#">Get a Quote</a>
+    <button class="burger" aria-label="Menu"><i></i></button>
+  </div>
+</header>
+
+<!-- 1. Page hero -->
+<section class="phero">
+  <img src="https://images.unsplash.com/photo-1794390884172-0f5b0951af01?auto=format&fit=crop&w=1920&q=75" alt="" />
+  <div class="ov"></div>
+  <div class="wrap">
+    <div class="crumbs">Home &nbsp;/&nbsp; <b>Industries</b></div>
+    <span class="eyebrow">Industries we serve</span>
+    <h1>Software shaped by the industry it runs in.</h1>
+    <p>A contractor, a shop and a payroll office don't work the same way, so their software shouldn't either. Here's what we've learned in each and how we help.</p>
+  </div>
+</section>
+
+<!-- 2. Industry index -->
+<section class="b" style="padding-bottom:16px">
+  <div class="wrap">
+    <span class="eyebrow">Where we work</span>
+    <h2 class="title" style="max-width:640px">Five kinds of business we know well.</h2>
+    <div class="tiles">
+      <a class="tile" href="#construction"><div class="tph"><img src="https://images.unsplash.com/photo-1741706527174-ebd2768ffc49?auto=format&fit=crop&w=500&q=75" alt="" /></div><div class="tbd"><b>Construction</b><small>Materials, sites, approvals</small></div></a>
+      <a class="tile" href="#retail"><div class="tph"><img src="https://images.unsplash.com/photo-1761370571806-886404629697?auto=format&fit=crop&w=500&q=75" alt="" /></div><div class="tbd"><b>Retail &amp; online shops</b><small>Sales, stock, selling online</small></div></a>
+      <a class="tile" href="#food"><div class="tph"><img src="https://images.unsplash.com/photo-1687422808277-2334638f09fb?auto=format&fit=crop&w=500&q=75" alt="" /></div><div class="tbd"><b>Food &amp; hospitality</b><small>Menus, orders, kitchens</small></div></a>
+      <a class="tile" href="#corporate"><div class="tph"><img src="https://images.unsplash.com/photo-1793697601868-d8770f76bc07?auto=format&fit=crop&w=500&q=75" alt="" /></div><div class="tbd"><b>Corporate &amp; HR</b><small>People, payroll, admin</small></div></a>
+      <a class="tile" href="#sme"><div class="tph"><img src="https://images.unsplash.com/photo-1687422809069-0fa3546b8471?auto=format&fit=crop&w=500&q=75" alt="" /></div><div class="tbd"><b>Small businesses</b><small>Websites and everyday tools</small></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Industry sections -->
+<div class="wrap">
+  <section class="ind" id="construction">
+    <div class="iph"><img src="https://images.unsplash.com/photo-1741706527174-ebd2768ffc49?auto=format&fit=crop&w=1000&q=75" alt="Cranes over a building site in Nairobi" /></div>
+    <div>
+      <span class="eyebrow">Construction</span>
+      <h2>Know where every material is, on every site.</h2>
+      <p class="intro">Construction runs on materials moving between suppliers, the main store and sites, with approvals at every step. When that lives in WhatsApp chats and paper books, money leaks.</p>
+      <div class="cols">
+        <div class="pain"><h4>Common challenges</h4><ul><li>Orders and approvals lost in chats</li><li>No clear stock picture per site</li><li>Paper LPOs and waybills</li></ul></div>
+        <div class="help"><h4>How we help</h4><ul><li>Purchase orders with approvals</li><li>Site-to-site delivery tracking</li><li>Printable LPOs and waybills</li><li>Phone-friendly for site staff</li></ul></div>
+      </div>
+      <div class="proof"><h4>Our work here</h4><div class="chips"><span class="chip">CONSTRACTOR <small class="dev">In development</small></span></div></div>
+      <div class="actions"><a class="btn btn-primary" href="#">Join early access →</a><a class="link" href="#">Ask about a custom system →</a></div>
+    </div>
+  </section>
+
+  <section class="ind flip" id="retail">
+    <div class="iph"><img src="https://images.unsplash.com/photo-1761370571806-886404629697?auto=format&fit=crop&w=1000&q=75" alt="A shopkeeper standing in his shop" /></div>
+    <div>
+      <span class="eyebrow">Retail &amp; online shops</span>
+      <h2>Sell more, in the shop and online.</h2>
+      <p class="intro">Shops need to be found online, take M-Pesa without fuss and know what's on the shelf. We build the online store your customers see and the tools behind the counter.</p>
+      <div class="cols">
+        <div class="pain"><h4>Common challenges</h4><ul><li>Customers can't find you online</li><li>Stock counted by hand</li><li>Sales recorded in a book</li></ul></div>
+        <div class="help"><h4>How we help</h4><ul><li>Online shops with product catalogues</li><li>M-Pesa payments built in</li><li>Stock and sales tracking</li><li>Point of sale (coming soon)</li></ul></div>
+      </div>
+      <div class="proof"><h4>Our work here</h4><div class="chips"><a class="chip" href="#">Time Vault Kenya <small class="live">Live</small></a><a class="chip" href="#">Duka Kenya <small class="live">Live</small></a><span class="chip">Retail POS <small class="soon">Coming soon</small></span></div></div>
+      <div class="actions"><a class="btn btn-primary" href="#">Ask about your shop →</a></div>
+    </div>
+  </section>
+
+  <section class="ind" id="food">
+    <div class="iph"><img src="https://images.unsplash.com/photo-1687422808277-2334638f09fb?auto=format&fit=crop&w=1000&q=75" alt="A cook preparing food on a grill" /></div>
+    <div>
+      <span class="eyebrow">Food &amp; hospitality</span>
+      <h2>Take orders without the chaos.</h2>
+      <p class="intro">Restaurants and food kiosks need ordering that's quick on a phone, a menu that's easy to update, and owners who can see what's selling.</p>
+      <div class="cols">
+        <div class="pain"><h4>Common challenges</h4><ul><li>Orders taken by phone and lost</li><li>Menus that are hard to update</li><li>No view of what sells best</li></ul></div>
+        <div class="help"><h4>How we help</h4><ul><li>Online menus and ordering</li><li>Phone sign-in for customers</li><li>Separate admin and owner views</li><li>M-Pesa payments</li></ul></div>
+      </div>
+      <div class="proof"><h4>Our work here</h4><div class="chips"><a class="chip" href="#">Kiosk Kitchen <small class="live">Live</small></a></div></div>
+      <div class="actions"><a class="btn btn-primary" href="#">Ask about ordering →</a></div>
+    </div>
+  </section>
+
+  <section class="ind flip" id="corporate">
+    <div class="iph"><img src="https://images.unsplash.com/photo-1793697601868-d8770f76bc07?auto=format&fit=crop&w=1000&q=75" alt="A group of colleagues in a meeting" /></div>
+    <div>
+      <span class="eyebrow">Corporate &amp; HR</span>
+      <h2>Payroll and people records you can trust.</h2>
+      <p class="intro">Every month, Kenyan employers work out PAYE, NSSF, SHIF and Housing Levy, track attendance and produce payslips. It shouldn't take a week of spreadsheets.</p>
+      <div class="cols">
+        <div class="pain"><h4>Common challenges</h4><ul><li>Payroll rebuilt in Excel monthly</li><li>Deductions checked by hand</li><li>Attendance on paper</li></ul></div>
+        <div class="help"><h4>How we help</h4><ul><li>Statutory deductions worked out</li><li>Payslips for every employee</li><li>Attendance, even offline</li><li>Company websites and portals</li></ul></div>
+      </div>
+      <div class="proof"><h4>Our work here</h4><div class="chips"><span class="chip">Payroll &amp; HR <small class="dev">In development</small></span></div></div>
+      <div class="actions"><a class="btn btn-primary" href="#">Join early access →</a><a class="link" href="#">Ask about a company website →</a></div>
+    </div>
+  </section>
+
+  <section class="ind" id="sme">
+    <div class="iph"><img src="https://images.unsplash.com/photo-1687422809069-0fa3546b8471?auto=format&fit=crop&w=1000&q=75" alt="A tailor checking his phone at his sewing machine" /></div>
+    <div>
+      <span class="eyebrow">Small businesses</span>
+      <h2>Look professional, work smarter.</h2>
+      <p class="intro">For tailors, salons, consultants and every small business in between: a website that makes you look established and simple tools that save hours every week.</p>
+      <div class="cols">
+        <div class="pain"><h4>Common challenges</h4><ul><li>No website, or an outdated one</li><li>Customers ask the same questions</li><li>Records spread across notebooks</li></ul></div>
+        <div class="help"><h4>How we help</h4><ul><li>Business websites that convert</li><li>Logo and brand identity</li><li>Simple booking and record tools</li><li>Google listing set up</li></ul></div>
+      </div>
+      <div class="proof"><h4>Our work here</h4><div class="chips"><span class="chip">Business websites for local SMEs</span></div></div>
+      <div class="actions"><a class="btn btn-primary" href="#">Ask about a website →</a><a class="link" href="#">See our services →</a></div>
+    </div>
+  </section>
+</div>
+
+<!-- 4. Other industries -->
+<section class="b sand">
+  <div class="wrap">
+    <div class="other">
+      <div>
+        <span class="eyebrow">Don't see your industry?</span>
+        <h2>We learn how your business works first.</h2>
+        <p class="l">Every project starts the same way, whatever the industry. If your business runs on paper, spreadsheets or WhatsApp, we can probably help.</p>
+        <a class="btn btn-primary" style="margin-top:24px" href="#">Tell us about your business →</a>
+      </div>
+      <div class="osteps">
+        <div><b>01</b><div><h4>We listen</h4><p>How your team works today and what slows it down.</p></div></div>
+        <div><b>02</b><div><h4>We map it out</h4><p>A clear plan and screens you approve before anything is built.</p></div></div>
+        <div><b>03</b><div><h4>We build and stay</h4><p>Launch, training and support as your business grows.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. CTA -->
+<section class="ctaband">
+  <img src="https://images.unsplash.com/photo-1781504842018-c51ce0dac23f?auto=format&fit=crop&w=1920&q=75" alt="" />
+  <div class="ov"></div>
+  <div class="wrap">
+    <span class="eyebrow">Let's talk</span>
+    <h2>Software that fits your industry.</h2>
+    <p>Tell us what your business does. We'll come back with ideas that fit how your industry really works.</p>
+    <div class="actions"><a class="btn btn-light" href="#">Get a Quote</a><a class="btn btn-ghost" href="#">Chat on WhatsApp</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fg">
+      <div><a class="logo rev" href="#"><svg viewBox="0 0 64 64"><use href="#mark-rev"/></svg><div><b>ARI-GRAM</b><span>TECHNOLOGIES</span></div></a>
+        <p style="margin-top:16px;max-width:280px">Technology. Innovation. Progress.<br>Business software and digital solutions.</p></div>
+      <div><h5>Company</h5><ul><li>About</li><li>Our Work</li><li>Industries</li><li>Contact</li></ul></div>
+      <div><h5>Services</h5><ul><li>Software Development</li><li>Web Solutions</li><li>Business Systems</li><li>Digital Creative</li></ul></div>
+      <div><h5>Contact</h5><ul><li>WhatsApp +254 726 875 878</li><li>ari.gram.technologies@gmail.com</li><li>Kenya</li></ul></div>
+    </div>
+    <div class="legal"><span>© 2026 ARI-GRAM Technologies. All rights reserved.</span><span>Built in Kenya</span></div>
+  </div>
+</footer>
+</body>
+</html>
