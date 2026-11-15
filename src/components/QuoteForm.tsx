@@ -13,21 +13,41 @@ const timings = ["As soon as possible", "In the next 1 to 3 months", "Just explo
 
 const empty = { name: "", business: "", email: "", phone: "", need: "", timing: timings[0], message: "" };
 
+type RequiredField = "name" | "email" | "message";
+const required: { field: RequiredField; id: string; label: string }[] = [
+  { field: "name", id: "q-name", label: "your name" },
+  { field: "email", id: "q-email", label: "your email" },
+  { field: "message", id: "q-message", label: "the “Tell us more” box" },
+];
+
+const listOf = (items: string[]) =>
+  items.length <= 1 ? items.join("") : `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}`;
+
+const errorRing = "border-destructive focus-visible:ring-destructive";
+
 /** The main "Get a Quote" form, shown on /contact. Sends through the shared EmailJS helper. */
 export const QuoteForm = () => {
   const { toast } = useToast();
   const [form, setForm] = useState(empty);
   const [sending, setSending] = useState(false);
-  const set = (field: keyof typeof empty) => (value: string) => setForm((f) => ({ ...f, [field]: value }));
+  const [missing, setMissing] = useState<RequiredField[]>([]);
+  const set = (field: keyof typeof empty) => (value: string) => {
+    setForm((f) => ({ ...f, [field]: value }));
+    if (value.trim()) setMissing((m) => m.filter((x) => x !== field));
+  };
+  const invalid = (field: RequiredField) => missing.includes(field);
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+    const gaps = required.filter((r) => !form[r.field].trim());
+    if (gaps.length) {
+      setMissing(gaps.map((g) => g.field));
       toast({
-        title: "A few details missing",
-        description: "Please add your name, email and a short message.",
+        title: gaps.length === 1 ? "One thing missing" : "A few things missing",
+        description: `Please fill in ${listOf(gaps.map((g) => g.label))}.`,
         variant: "destructive",
       });
+      document.getElementById(gaps[0].id)?.focus();
       return;
     }
 
@@ -48,6 +68,7 @@ export const QuoteForm = () => {
       });
       toast({ title: "Message sent ✓", description: "Thanks. We'll get back to you, usually within one working day." });
       setForm(empty);
+      setMissing([]);
     } catch (error) {
       console.error("Quote form error:", error);
       toast({
@@ -67,7 +88,7 @@ export const QuoteForm = () => {
           <label htmlFor="q-name" className="text-sm font-medium text-ink">
             Your name
           </label>
-          <Input id="q-name" placeholder="Full name" autoComplete="name" value={form.name} onChange={(e) => set("name")(e.target.value)} />
+          <Input id="q-name" placeholder="Full name" autoComplete="name" aria-invalid={invalid("name")} className={cn(invalid("name") && errorRing)} value={form.name} onChange={(e) => set("name")(e.target.value)} />
         </div>
         <div className="space-y-1.5">
           <label htmlFor="q-business" className="text-sm font-medium text-ink">
@@ -81,7 +102,7 @@ export const QuoteForm = () => {
           <label htmlFor="q-email" className="text-sm font-medium text-ink">
             Email
           </label>
-          <Input id="q-email" type="email" placeholder="you@company.com" autoComplete="email" value={form.email} onChange={(e) => set("email")(e.target.value)} />
+          <Input id="q-email" type="email" placeholder="you@company.com" autoComplete="email" aria-invalid={invalid("email")} className={cn(invalid("email") && errorRing)} value={form.email} onChange={(e) => set("email")(e.target.value)} />
         </div>
         <div className="space-y-1.5">
           <label htmlFor="q-phone" className="text-sm font-medium text-ink">
@@ -139,11 +160,13 @@ export const QuoteForm = () => {
         <Textarea
           id="q-message"
           rows={5}
-          className="resize-none"
+          className={cn("resize-none", invalid("message") && errorRing)}
+          aria-invalid={invalid("message")}
           placeholder="What does your business do, and what would you like to build or fix?"
           value={form.message}
           onChange={(e) => set("message")(e.target.value)}
         />
+        {invalid("message") && <p className="text-[13px] font-medium text-destructive">Please write a short message, even one sentence.</p>}
       </div>
 
       <Button type="submit" size="lg" className="justify-self-start font-display font-bold" disabled={sending}>
