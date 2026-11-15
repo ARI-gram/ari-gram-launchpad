@@ -108,7 +108,7 @@ const ServiceBlock = ({ service, index }: { service: Service; index: number }) =
         </p>
 
         <div className="mt-7 flex flex-wrap items-center gap-5">
-          <Link to="/#quote" className="btn btn-primary group">
+          <Link to="/contact#form" className="btn btn-primary group">
             {service.cta} <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
           {service.secondary && (
@@ -135,7 +135,7 @@ const Support = () => (
               Every website and system we build can come with ongoing support, so you always have someone to call when
               something needs fixing or changing.
             </p>
-            <Link to="/#quote" className="btn btn-light group mt-7">
+            <Link to="/contact#form" className="btn btn-light group mt-7">
               Ask about support <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>

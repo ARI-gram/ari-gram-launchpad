@@ -110,7 +110,7 @@ const Featured = () => (
           <a href={featuredProject.live} target="_blank" rel="noopener noreferrer" className="btn btn-primary group">
             Visit the site <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </a>
-          <Link to="/#quote" className="btn border border-border bg-white text-ink hover:border-ink/40">
+          <Link to="/contact#form" className="btn border border-border bg-white text-ink hover:border-ink/40">
             Start a project like this
           </Link>
         </div>

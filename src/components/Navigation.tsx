@@ -4,14 +4,14 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "./Logo";
 
-/** Links to full pages use a path; links to homepage sections use "/#id" until those pages exist. */
+/** Main menu: every item is its own page. */
 const navLinks = [
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
   { to: "/solutions", label: "Solutions" },
   { to: "/industries", label: "Industries" },
   { to: "/work", label: "Our Work" },
-  { to: "/#contact", label: "Contact" },
+  { to: "/contact", label: "Contact" },
 ];
 
 export const Navigation = () => {
@@ -61,7 +61,7 @@ export const Navigation = () => {
           </ul>
         </nav>
 
-        <Link to="/#contact" className="btn btn-primary hidden lg:inline-flex">
+        <Link to="/contact#form" className="btn btn-primary hidden lg:inline-flex">
           Get a Quote
         </Link>
 
@@ -95,7 +95,7 @@ export const Navigation = () => {
               </li>
             ))}
             <li className="pt-4">
-              <Link to="/#contact" onClick={() => setOpen(false)} className="btn btn-primary w-full">
+              <Link to="/contact#form" onClick={() => setOpen(false)} className="btn btn-primary w-full">
                 Get a Quote
               </Link>
             </li>

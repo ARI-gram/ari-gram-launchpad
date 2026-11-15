@@ -7,7 +7,7 @@ type CtaBandProps = {
   eyebrow?: string;
   title?: string;
   text?: string;
-  /** Where "Get a Quote" goes: the form on the homepage by default. */
+  /** Where "Get a Quote" goes: the form on /contact by default. */
   quoteHref?: string;
 };
 
@@ -15,7 +15,7 @@ export const CtaBand = ({
   eyebrow = "Let's talk",
   title = "Let's build something better.",
   text = "Tell us what your business needs. We'll reply with honest advice and a clear quote.",
-  quoteHref = "/#quote",
+  quoteHref = "/contact#form",
 }: CtaBandProps) => (
   <div className="relative overflow-hidden bg-coal text-white">
     <img src={images.nairobi(1920)} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />

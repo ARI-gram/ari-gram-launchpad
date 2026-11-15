@@ -168,7 +168,7 @@ const OtherIndustries = () => (
             Every project starts the same way, whatever the industry. If your business runs on paper, spreadsheets or
             WhatsApp, we can probably help.
           </p>
-          <Link to="/#quote" className="btn btn-primary group mt-6">
+          <Link to="/contact#form" className="btn btn-primary group mt-6">
             Tell us about your business <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>

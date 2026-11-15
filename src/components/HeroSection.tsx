@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ArrowRight, Check } from "lucide-react";
 import { images } from "@/lib/images";
 import { CountUp } from "./CountUp";
@@ -103,9 +104,9 @@ export const HeroSection = () => (
           <a href="#services" className="btn btn-light group">
             Explore our services <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
-          <a href="#contact" className="btn btn-ghost-light">
+          <Link to="/contact" className="btn btn-ghost-light">
             Talk to our team
-          </a>
+          </Link>
         </div>
         <ul style={d(660)} className="anim-rise mt-9 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/70">
           {facts.map((f) => (

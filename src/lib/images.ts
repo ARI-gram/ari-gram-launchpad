@@ -29,4 +29,5 @@ export const images = {
   grillCook: (w = 1000) => unsplash("1687422808277-2334638f09fb", w),
   colleaguesMeeting: (w = 1000) => unsplash("1793697601868-d8770f76bc07", w),
   tailorPhone: (w = 1000) => unsplash("1687422809069-0fa3546b8471", w),
+  ownerPhone: (w = 1920) => unsplash("1687422808278-d17b09489ed1", w),
 };

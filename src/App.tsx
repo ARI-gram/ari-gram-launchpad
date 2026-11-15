@@ -9,6 +9,7 @@ import Services from "./pages/Services";
 import Solutions from "./pages/Solutions";
 import Industries from "./pages/Industries";
 import Work from "./pages/Work";
+import Contact from "./pages/Contact";
 import { ScrollManager } from "./components/ScrollManager";
 import NotFound from "./pages/NotFound";
 
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/solutions" element={<Solutions />} />
           <Route path="/industries" element={<Industries />} />
           <Route path="/work" element={<Work />} />
+          <Route path="/contact" element={<Contact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
