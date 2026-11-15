@@ -9,6 +9,7 @@ import { useReveal } from "@/hooks/use-reveal";
 import { images } from "@/lib/images";
 import { reveal } from "@/lib/reveal";
 import { founder, milestones } from "@/content/about";
+import { workStats } from "@/content/work";
 
 const values = [
   { title: "Understand first", text: "We learn your workflow before we suggest anything. No templates forced onto your business." },
@@ -38,7 +39,7 @@ const ways = [
 
 const facts: { value: string; accent?: string; text: string }[] = [
   { value: "3", text: "Industry products in development: CONSTRACTOR, Payroll & HR, Retail POS" },
-  { value: "3", text: "Client websites live today" },
+  { value: String(workStats.live), text: "Websites and apps live today" },
   { value: "5", text: "Industries served, from construction to retail" },
   { value: "1", text: "Team from first idea to everyday support" },
 ];
@@ -204,7 +205,7 @@ const BuiltSoFar = () => (
           We'd rather show you what we've built than talk about how big we are. Every number here is something you can
           see.
         </p>
-        <Link to="/#work" className="btn btn-primary group mt-7">
+        <Link to="/work" className="btn btn-primary group mt-7">
           View our work <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
         </Link>
       </div>

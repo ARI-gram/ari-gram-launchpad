@@ -229,6 +229,9 @@
   animation: grow 0.9s var(--ease-out) both;
   animation-delay: var(--d, 0ms);
 }
+.card-in {
+  animation: rise 0.5s var(--ease-out) both;
+}
 .anim-float {
   animation: float-soft 6s ease-in-out 1.6s infinite;
 }

@@ -47,7 +47,7 @@ export const services: Service[] = [
     image: images.laptopWork(1000),
     imageAlt: "Working on a website on a laptop",
     cta: "Ask about a website",
-    secondary: { label: "See live websites", to: "/#work" },
+    secondary: { label: "See live websites", to: "/work" },
   },
   {
     id: "systems",
