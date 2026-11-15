@@ -13,4 +13,9 @@ export const images = {
   nairobi: (w = 1920) => unsplash("1781504842018-c51ce0dac23f", w),
   officeLaptops: (w = 1920) => unsplash("1776039325116-af3714eea110", w),
   storyTeam: (w = 1000) => unsplash("1655720357872-ce227e4164ba", w),
+  codeScreen: (w = 1920) => unsplash("1730130054404-c2bd8e7038c2", w),
+  devPair: (w = 1000) => unsplash("1528901166007-3784c7dd3653", w),
+  laptopWork: (w = 1000) => unsplash("1594077810908-9ffd89d704ac", w),
+  designSwatches: (w = 1000) => unsplash("1561070791-2526d30994b5", w),
+  supportDesk: (w = 1600) => unsplash("1604145559206-e3bce0040e2d", w),
 };

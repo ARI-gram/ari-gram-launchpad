@@ -4,6 +4,7 @@ import { ArrowRight, Check } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { CtaBand } from "@/components/CtaBand";
+import { PageHero } from "@/components/PageHero";
 import { useReveal } from "@/hooks/use-reveal";
 import { images } from "@/lib/images";
 import { reveal } from "@/lib/reveal";
@@ -41,46 +42,6 @@ const facts = [
   { value: "5", text: "Industries served, from construction to retail" },
   { value: "1", text: "Team from first idea to everyday support" },
 ];
-
-const PageHero = () => (
-  <section className="relative overflow-hidden bg-coal text-white">
-    <img
-      src={images.officeLaptops(1920)}
-      srcSet={`${images.officeLaptops(900)} 900w, ${images.officeLaptops(1920)} 1920w`}
-      sizes="100vw"
-      alt=""
-      className="anim-settle absolute inset-0 h-full w-full object-cover"
-    />
-    <div className="photo-overlay absolute inset-0" />
-    <div className="wrap relative pb-20 pt-16 md:pb-24 md:pt-20">
-      <nav aria-label="Breadcrumb" className="anim-rise text-[13px] text-white/60">
-        <Link to="/" className="hover:text-white">
-          Home
-        </Link>
-        <span className="mx-2">/</span>
-        <span className="text-white" aria-current="page">
-          About us
-        </span>
-      </nav>
-      <span className="eyebrow anim-rise mt-6" style={{ "--d": "100ms" } as React.CSSProperties}>
-        About ARI-GRAM
-      </span>
-      <h1
-        className="anim-rise mt-5 max-w-[760px] text-[38px] font-extrabold leading-[1.08] md:text-[56px]"
-        style={{ "--d": "220ms" } as React.CSSProperties}
-      >
-        We build the software Kenyan businesses run on.
-      </h1>
-      <p
-        className="anim-rise mt-5 max-w-[600px] text-[17.5px] leading-relaxed text-white/75"
-        style={{ "--d": "380ms" } as React.CSSProperties}
-      >
-        A technology company focused on one thing: helping businesses operate better, manage their work and grow, with
-        software that fits how they actually work.
-      </p>
-    </div>
-  </section>
-);
 
 const Story = () => (
   <section className="py-20 lg:py-28">
@@ -311,7 +272,13 @@ const About = () => {
     <>
       <Navigation />
       <main>
-        <PageHero />
+        <PageHero
+          image={images.officeLaptops}
+          crumb="About us"
+          eyebrow="About ARI-GRAM"
+          title="We build the software Kenyan businesses run on."
+          text="A technology company focused on one thing: helping businesses operate better, manage their work and grow, with software that fits how they actually work."
+        />
         <Story />
         <MissionVision />
         <Values />

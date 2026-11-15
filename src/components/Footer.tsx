@@ -14,10 +14,10 @@ const columns = [
   {
     title: "Services",
     links: [
-      { label: "Software Development", href: "/#services" },
-      { label: "Web Solutions", href: "/#services" },
-      { label: "Business Systems", href: "/#solutions" },
-      { label: "Digital Creative", href: "/#services" },
+      { label: "Software Development", href: "/services#software" },
+      { label: "Web Solutions", href: "/services#web" },
+      { label: "Business Systems", href: "/services#systems" },
+      { label: "Digital Creative", href: "/services#creative" },
     ],
   },
 ];

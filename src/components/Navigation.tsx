@@ -7,7 +7,7 @@ import { Logo } from "./Logo";
 /** Links to full pages use a path; links to homepage sections use "/#id" until those pages exist. */
 const navLinks = [
   { to: "/about", label: "About" },
-  { to: "/#services", label: "Services" },
+  { to: "/services", label: "Services" },
   { to: "/#solutions", label: "Solutions" },
   { to: "/#industries", label: "Industries" },
   { to: "/#work", label: "Our Work" },

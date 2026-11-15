@@ -1,27 +1,32 @@
 import { ArrowUpRight, BarChart3, Code2, Monitor, Palette } from "lucide-react";
+import { Link } from "react-router-dom";
 import { reveal } from "@/lib/reveal";
 
 const services = [
   {
     icon: Code2,
+    id: "software",
     title: "Software Development",
     text: "Custom business applications built for your workflow.",
     items: ["Custom applications", "Workflow automation", "API integrations"],
   },
   {
     icon: Monitor,
+    id: "web",
     title: "Web Solutions",
     text: "Websites and web platforms that bring in customers.",
     items: ["Business websites", "E-commerce", "Portals & dashboards"],
   },
   {
     icon: BarChart3,
+    id: "systems",
     title: "Business Systems",
     text: "Ready-built systems adapted to your company.",
     items: ["POS & inventory", "HR & payroll", "ERP & materials"],
   },
   {
     icon: Palette,
+    id: "creative",
     title: "Digital Creative",
     text: "Brand identity and content that look as good as you work.",
     items: ["Branding & logos", "Posters & social media", "Video editing"],
@@ -42,7 +47,7 @@ export const ServicesSection = () => (
       </div>
 
       <div className="mt-12 grid overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4" style={{ gap: 1 }}>
-        {services.map(({ icon: Icon, title, text, items }, i) => (
+        {services.map(({ id, icon: Icon, title, text, items }, i) => (
           <article key={title} className="group flex flex-col gap-3 bg-white p-7 transition-colors hover:bg-[#FBFAF7]" {...reveal(i * 110)}>
             <Icon className="h-7 w-7 text-brand-blue transition-transform duration-300 group-hover:-translate-y-1" strokeWidth={1.6} />
             <h3 className="mt-3 text-[19px] font-bold text-ink">{title}</h3>
@@ -54,9 +59,9 @@ export const ServicesSection = () => (
                 </li>
               ))}
             </ul>
-            <a href="#contact" className="mt-auto inline-flex items-center gap-1 pt-4 font-display text-sm font-bold text-brand-blue">
-              Ask about this <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </a>
+            <Link to={`/services#${id}`} className="mt-auto inline-flex items-center gap-1 pt-4 font-display text-sm font-bold text-brand-blue">
+              Learn more <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </Link>
           </article>
         ))}
       </div>
