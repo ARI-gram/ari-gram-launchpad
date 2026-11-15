@@ -1,70 +1,63 @@
-import { Code2, Zap, Shield, Users } from "lucide-react";
+import { images } from "@/lib/images";
 
-const stats = [
-  { icon: Code2, label: "Projects Delivered", value: "50+" },
-  { icon: Zap, label: "Automations Built", value: "100+" },
-  { icon: Shield, label: "Issues Resolved", value: "200+" },
-  { icon: Users, label: "Happy Clients", value: "30+" },
+const points = [
+  {
+    title: "Built around real operations",
+    text: "We study the workflow before writing code, so the system fits the business, not the other way round.",
+  },
+  {
+    title: "Made for the Kenyan market",
+    text: "M-Pesa payments, KRA requirements, PAYE, NSSF and SHIF built in where they apply.",
+  },
+  {
+    title: "We stay after launch",
+    text: "Training, maintenance and improvements once your team is using the system day to day.",
+  },
 ];
 
-export const AboutSection = () => {
-  return (
-    <section id="about" className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-glow opacity-20" />
-      
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Content */}
-          <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 glass-gold px-4 py-2 rounded-full">
-              <span className="text-sm font-mono text-gold">// About Us</span>
-            </div>
-            
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
-              Solving Tech Problems for{" "}
-              <span className="text-gradient-premium">Real People</span>
-            </h2>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              ARI-gram Technologies is dedicated to solving community and business 
-              tech problems. From building custom websites and web applications to 
-              automating workflows with n8n and troubleshooting software issues — 
-              we're here to help.
-            </p>
-            
-            <p className="text-muted-foreground leading-relaxed">
-              Currently led by one passionate developer, we're growing as demand 
-              increases. Our focus is on delivering quality solutions that actually 
-              work, not just look good on paper.
-            </p>
-
-            <div className="flex items-center gap-4 pt-4">
-              <div className="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center">
-                <Code2 className="w-6 h-6 text-gold" />
-              </div>
-              <div>
-                <p className="font-semibold">Developer-First Approach</p>
-                <p className="text-sm text-muted-foreground">Quality code, honest pricing</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Stats Grid */}
-          <div className="grid grid-cols-2 gap-4">
-            {stats.map((stat, index) => (
-              <div 
-                key={stat.label}
-                className="glass rounded-2xl p-6 hover:-translate-y-1 transition-transform duration-300"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <stat.icon className="w-8 h-8 text-gold mb-4" />
-                <p className="text-3xl font-bold text-gradient-gold">{stat.value}</p>
-                <p className="text-sm text-muted-foreground mt-1">{stat.label}</p>
-              </div>
-            ))}
-          </div>
+export const AboutSection = () => (
+  <section id="about" className="py-20 lg:py-28">
+    <div className="wrap grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:gap-16">
+      <div className="relative">
+        <img
+          src={images.aboutTeam(1000)}
+          srcSet={`${images.aboutTeam(600)} 600w, ${images.aboutTeam(1000)} 1000w`}
+          sizes="(min-width: 1024px) 560px, 100vw"
+          alt="A small team reviewing work together on a laptop"
+          loading="lazy"
+          className="aspect-[4/3] w-full rounded-xl object-cover lg:aspect-[4/5]"
+        />
+        <div className="absolute -bottom-5 left-5 right-5 rounded-lg bg-white px-5 py-4 shadow-[0_12px_30px_rgba(20,24,32,0.12)] sm:right-auto">
+          <p className="font-display text-sm font-bold text-ink">Software · Web · Systems · Support</p>
+          <p className="text-[13px] text-muted-foreground">One team from first idea to everyday use</p>
         </div>
       </div>
-    </section>
-  );
-};
+
+      <div className="pt-6 lg:pt-0">
+        <span className="eyebrow">Who we are</span>
+        <h2 className="section-title mt-4">A software company that learns how your business works first.</h2>
+        <p className="mt-5 text-[16.5px] leading-relaxed text-ink/75">
+          ARI-GRAM Technologies builds business software and digital platforms for companies in Kenya and beyond.
+          We start with the way your team already works (the stock sheets, the payroll spreadsheet, the order book)
+          and turn it into a system that is faster and easier to trust.
+        </p>
+        <p className="mt-4 text-[16.5px] leading-relaxed text-ink/75">
+          Websites, branding and support are part of what we do, but our focus is the software that runs the business
+          behind them.
+        </p>
+
+        <ol className="mt-8 divide-y divide-border border-y border-border">
+          {points.map((p, i) => (
+            <li key={p.title} className="grid grid-cols-[44px_1fr] gap-3 py-5">
+              <span className="font-display text-sm font-bold text-amber">0{i + 1}</span>
+              <div>
+                <h3 className="text-[17px] font-bold text-ink">{p.title}</h3>
+                <p className="mt-1 text-[14.5px] text-muted-foreground">{p.text}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </section>
+);

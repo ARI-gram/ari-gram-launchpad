@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ARI-GRAM Technologies</title>
+<link rel="icon" href="logo-mark.svg" type="image/svg+xml" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #092B59; --navy-900: #061E40; --blue: #1256A0; --electric: #168BFA;
+    --slate: #64748B; --ink: #0B1B33; --line: #DCE4EF; --soft: #F4F7FB; --white: #FFFFFF;
+    --head: Manrope, system-ui, sans-serif; --body: Inter, system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: var(--body); color: var(--ink); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, h4 { font-family: var(--head); line-height: 1.15; margin: 0; letter-spacing: -0.02em; }
+  p { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+  @media (min-width: 768px) { .wrap { padding: 0 32px; } }
+
+  /* Buttons */
+  .btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--head); font-weight: 700; font-size: 15px; padding: 13px 22px; border-radius: 8px; border: 1.5px solid transparent; cursor: pointer; white-space: nowrap; }
+  .btn-primary { background: var(--electric); color: #fff; }
+  .btn-primary:hover { background: #0E78E0; }
+  .btn-ghost { border-color: rgba(255,255,255,.35); color: #fff; }
+  .btn-ghost:hover { border-color: #fff; }
+  .btn-navy { background: var(--navy); color: #fff; }
+  .btn-outline { border-color: var(--line); color: var(--navy); background: #fff; }
+
+  /* Logo */
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo svg { width: 36px; height: 36px; flex: none; }
+  .logo b { display: block; font-family: var(--head); font-weight: 800; font-size: 19px; color: var(--navy); line-height: 1; letter-spacing: -0.01em; }
+  .logo span { display: block; font-family: var(--head); font-weight: 700; font-size: 8px; letter-spacing: .42em; color: var(--blue); margin-top: 4px; line-height: 1; }
+  .logo.rev b { color: #fff; } .logo.rev span { color: #8CC4FF; }
+
+  /* Nav */
+  header { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .nav ul { display: none; list-style: none; margin: 0; padding: 0; gap: 26px; font-size: 14.5px; font-weight: 500; color: #3A4A63; }
+  .nav ul a:hover, .nav ul a.on { color: var(--navy); }
+  .nav ul a.on { font-weight: 600; }
+  .nav .cta { display: none; }
+  .burger { width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 8px; display: grid; place-items: center; background: #fff; }
+  .burger i { display: block; width: 18px; height: 2px; background: var(--navy); box-shadow: 0 -6px 0 var(--navy), 0 6px 0 var(--navy); }
+  @media (min-width: 1024px) { .nav ul { display: flex; } .nav .cta { display: inline-flex; } .burger { display: none; } }
+
+  /* Hero */
+  .hero { background: var(--navy); color: #fff; position: relative; overflow: hidden; }
+  .hero::after { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 48px 48px; mask-image: linear-gradient(90deg, transparent, #000 60%); pointer-events: none; }
+  .hero .wrap { position: relative; z-index: 1; display: grid; gap: 40px; padding-top: 56px; padding-bottom: 64px; }
+  .eyebrow { display: inline-block; font-family: var(--head); font-size: 12.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #8CC4FF; margin-bottom: 18px; }
+  .hero h1 { font-size: clamp(34px, 6vw, 58px); font-weight: 800; }
+  .hero h1 em { font-style: normal; color: var(--electric); }
+  .hero p.lead { font-size: 17px; color: #C9D7EC; max-width: 540px; margin-top: 20px; }
+  .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+  .hero .facts { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 34px; font-size: 13.5px; color: #A9C3E6; }
+  .hero .facts span::before { content: "✓"; color: var(--electric); font-weight: 700; margin-right: 7px; }
+  @media (min-width: 1024px) { .hero .wrap { grid-template-columns: 1.05fr 1fr; align-items: center; padding-top: 88px; padding-bottom: 96px; } }
+
+  /* Hero product visual */
+  .screen { background: #fff; color: var(--ink); border-radius: 12px; box-shadow: 0 30px 60px rgba(0,0,0,.35); overflow: hidden; font-size: 12px; }
+  .screen .bar { display: flex; gap: 6px; align-items: center; padding: 10px 12px; background: #EEF2F8; border-bottom: 1px solid var(--line); }
+  .screen .bar i { width: 9px; height: 9px; border-radius: 50%; background: #CBD5E1; }
+  .screen .bar small { margin-left: 10px; color: var(--slate); font-size: 11px; }
+  .app { display: grid; grid-template-columns: 120px 1fr; min-height: 300px; }
+  .side { background: var(--navy-900); color: #A9C3E6; padding: 14px 10px; display: flex; flex-direction: column; gap: 4px; }
+  .side b { color: #fff; font-family: var(--head); font-size: 12px; margin-bottom: 10px; padding-left: 6px; }
+  .side span { padding: 6px; border-radius: 6px; } .side span.on { background: rgba(22,139,250,.18); color: #fff; }
+  .main { padding: 14px; display: grid; gap: 12px; align-content: start; }
+  .kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .kpi { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; }
+  .kpi small { color: var(--slate); font-size: 10.5px; } .kpi b { display: block; font-family: var(--head); font-size: 15px; color: var(--navy); }
+  .chart { border: 1px solid var(--line); border-radius: 8px; padding: 10px; height: 92px; display: flex; align-items: end; gap: 6px; }
+  .chart i { flex: 1; background: #CFE3FB; border-radius: 3px 3px 0 0; } .chart i.hi { background: var(--electric); }
+  .rows { border: 1px solid var(--line); border-radius: 8px; }
+  .rows div { display: flex; justify-content: space-between; padding: 7px 10px; border-top: 1px solid var(--line); }
+  .rows div:first-child { border-top: 0; color: var(--slate); font-size: 10.5px; text-transform: uppercase; letter-spacing: .06em; }
+  .pill { font-size: 10px; padding: 1px 8px; border-radius: 99px; background: #E3F1FF; color: var(--blue); font-weight: 600; }
+  .pill.ok { background: #E3F7EC; color: #157347; }
+  @media (max-width: 520px) { .app { grid-template-columns: 1fr; } .side { display: none; } }
+
+  /* Sections */
+  section.block { padding: 72px 0; }
+  section.block.soft { background: var(--soft); }
+  .sec-head { max-width: 640px; margin-bottom: 40px; }
+  .num { font-family: var(--head); font-size: 13px; font-weight: 700; color: var(--electric); letter-spacing: .12em; text-transform: uppercase; }
+  .sec-head h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; color: var(--navy); margin-top: 10px; }
+  .sec-head p { color: var(--slate); font-size: 16.5px; margin-top: 14px; }
+  @media (min-width: 1024px) { section.block { padding: 104px 0; } }
+
+  /* Who we are */
+  .who { display: grid; gap: 40px; }
+  .who .copy p + p { margin-top: 16px; }
+  .who .copy p { color: #3A4A63; font-size: 16.5px; }
+  .diff { display: grid; gap: 14px; }
+  .diff > div { display: grid; grid-template-columns: 40px 1fr; gap: 14px; padding: 18px; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+  .diff i { width: 40px; height: 40px; border-radius: 8px; background: #E8F2FE; display: grid; place-items: center; color: var(--blue); font-style: normal; font-family: var(--head); font-weight: 800; }
+  .diff h4 { font-size: 16px; color: var(--navy); } .diff p { font-size: 14.5px; color: var(--slate); margin-top: 3px; }
+  @media (min-width: 1024px) { .who { grid-template-columns: 1fr 1fr; gap: 64px; } }
+
+  /* Services */
+  .cards { display: grid; gap: 16px; grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .cards { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .cards.four { grid-template-columns: repeat(4, 1fr); } .cards.three { grid-template-columns: repeat(3, 1fr); } }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 26px; display: flex; flex-direction: column; gap: 12px; transition: border-color .2s, transform .2s; }
+  .card:hover { border-color: #9CC8F8; transform: translateY(-2px); }
+  .card .ico { width: 46px; height: 46px; border-radius: 10px; background: var(--navy); display: grid; place-items: center; }
+  .card .ico svg { width: 22px; height: 22px; stroke: #fff; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .card h3 { font-size: 19px; color: var(--navy); }
+  .card p { color: var(--slate); font-size: 14.5px; }
+  .card ul { margin: 4px 0 0; padding: 0; list-style: none; font-size: 14px; color: #3A4A63; display: grid; gap: 5px; }
+  .card ul li::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--electric); margin-right: 9px; vertical-align: middle; }
+  .card .more { margin-top: auto; padding-top: 8px; font-family: var(--head); font-weight: 700; font-size: 14px; color: var(--blue); }
+
+  /* Solutions */
+  .sol { display: grid; gap: 16px; }
+  @media (min-width: 1024px) { .sol { grid-template-columns: 1.2fr 1fr; grid-template-rows: auto auto; } .sol .big { grid-row: span 2; } }
+  .sol .item { border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 12px; }
+  .sol .big { background: var(--navy); color: #fff; }
+  .sol .big h3 { color: #fff; font-size: 26px; } .sol .big p { color: #C9D7EC; }
+  .sol .sm { background: #fff; border: 1px solid var(--line); }
+  .sol .sm h3 { color: var(--navy); font-size: 20px; } .sol .sm p { color: var(--slate); font-size: 14.5px; }
+  .tag { align-self: flex-start; font-family: var(--head); font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 4px 10px; border-radius: 99px; background: #E8F2FE; color: var(--blue); }
+  .big .tag { background: rgba(22,139,250,.2); color: #8CC4FF; }
+  .feat { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; font-size: 14px; color: #C9D7EC; margin-top: 4px; }
+  .feat span::before { content: "✓"; color: var(--electric); font-weight: 700; margin-right: 7px; }
+  .mini { margin-top: auto; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 10px; padding: 14px; display: grid; gap: 8px; font-size: 12.5px; }
+  .mini div { display: flex; justify-content: space-between; color: #C9D7EC; } .mini b { color: #fff; font-weight: 600; }
+
+  /* Industries */
+  .inds { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (min-width: 768px) { .inds { grid-template-columns: repeat(5, 1fr); } }
+  .ind { border: 1px solid var(--line); background: #fff; border-radius: 10px; padding: 20px 16px; text-align: left; }
+  .ind b { display: block; font-family: var(--head); color: var(--navy); font-size: 16px; }
+  .ind small { color: var(--slate); font-size: 13px; display: block; margin-top: 4px; line-height: 1.45; }
+  .ind .dot { width: 30px; height: 4px; border-radius: 2px; background: var(--electric); margin-bottom: 14px; }
+
+  /* Projects */
+  .proj { display: grid; gap: 16px; }
+  @media (min-width: 640px) { .proj { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .proj { grid-template-columns: repeat(4, 1fr); } }
+  .pcard { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: #fff; display: flex; flex-direction: column; }
+  .shot { aspect-ratio: 16/10; background: #EEF2F8; border-bottom: 1px solid var(--line); position: relative; }
+  .shot .b { height: 22px; background: #E2E8F0; display: flex; align-items: center; gap: 4px; padding: 0 8px; }
+  .shot .b i { width: 6px; height: 6px; border-radius: 50%; background: #CBD5E1; }
+  .shot .pg { position: absolute; inset: 22px 0 0; display: grid; place-items: center; font-family: var(--head); font-weight: 800; color: #fff; font-size: 17px; letter-spacing: -0.01em; text-align: center; padding: 12px; }
+  .pcard .body { padding: 18px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  .pcard small { color: var(--electric); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+  .pcard h4 { color: var(--navy); font-size: 17px; }
+  .pcard p { color: var(--slate); font-size: 14px; }
+  .pcard a { margin-top: auto; padding-top: 8px; color: var(--blue); font-weight: 600; font-size: 14px; }
+
+  /* Process */
+  .steps { display: grid; gap: 16px; counter-reset: s; }
+  @media (min-width: 768px) { .steps { grid-template-columns: repeat(4, 1fr); } }
+  .step { border-top: 3px solid var(--navy); padding-top: 18px; }
+  .step:last-child { border-top-color: var(--electric); }
+  .step b { font-family: var(--head); font-size: 13px; color: var(--electric); letter-spacing: .1em; }
+  .step h4 { color: var(--navy); font-size: 18px; margin-top: 6px; }
+  .step p { color: var(--slate); font-size: 14.5px; margin-top: 6px; }
+
+  /* CTA */
+  .cta-band { background: var(--navy); color: #fff; border-radius: 16px; padding: 40px 24px; display: grid; gap: 28px; position: relative; overflow: hidden; }
+  .cta-band h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; }
+  .cta-band p { color: #C9D7EC; margin-top: 12px; max-width: 520px; }
+  .cta-band .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .contact-line { display: flex; flex-wrap: wrap; gap: 10px 26px; font-size: 14.5px; color: #C9D7EC; }
+  .contact-line b { color: #fff; font-weight: 600; }
+  @media (min-width: 1024px) { .cta-band { grid-template-columns: 1.3fr 1fr; align-items: center; padding: 56px; } .cta-band .right { justify-self: end; } }
+
+  /* Footer */
+  footer { background: var(--navy-900); color: #A9C3E6; padding: 56px 0 28px; margin-top: 72px; font-size: 14.5px; }
+  .fgrid { display: grid; gap: 32px; }
+  @media (min-width: 768px) { .fgrid { grid-template-columns: 1.4fr 1fr 1fr 1fr; } }
+  footer h5 { font-family: var(--head); color: #fff; font-size: 14px; margin: 0 0 14px; }
+  footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  footer a:hover { color: #fff; }
+  .tagline { margin-top: 14px; max-width: 280px; }
+  .legal { border-top: 1px solid rgba(255,255,255,.1); margin-top: 40px; padding-top: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="mark">
+      <polygon points="4,58 27,5 37,5 16,58" fill="#092B59"/>
+      <polygon points="39,9 60,58 48,58 34,21" fill="#1256A0"/>
+      <rect x="19" y="39" width="22" height="7" rx="3.5" fill="#168BFA"/>
+      <circle cx="47" cy="42.5" r="4.5" fill="#168BFA"/>
+    </g>
+    <g id="mark-rev">
+      <polygon points="4,58 27,5 37,5 16,58" fill="#FFFFFF"/>
+      <polygon points="39,9 60,58 48,58 34,21" fill="#8CC4FF"/>
+      <rect x="19" y="39" width="22" height="7" rx="3.5" fill="#168BFA"/>
+      <circle cx="47" cy="42.5" r="4.5" fill="#168BFA"/>
+    </g>
+  </defs>
+</svg>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#"><svg viewBox="0 0 64 64"><use href="#mark"/></svg><div><b>ARI-GRAM</b><span>TECHNOLOGIES</span></div></a>
+    <ul>
+      <li><a class="on" href="#">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#solutions">Solutions</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#work">Our Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="btn btn-navy cta" href="#contact">Get a Quote</a>
+    <button class="burger" aria-label="Open menu"><i></i></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Business Technology &amp; Software Solutions</span>
+      <h1>Technology that moves businesses <em>forward.</em></h1>
+      <p class="lead">We design, build and support software for how your business actually runs: point of sale, inventory, payroll, construction materials, and the websites your customers find you on.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#services">Explore our services →</a>
+        <a class="btn btn-ghost" href="#contact">Talk to our team</a>
+      </div>
+      <div class="facts"><span>Built in Kenya</span><span>M-Pesa &amp; KRA-ready systems</span><span>Support after launch</span></div>
+    </div>
+
+    <div class="screen" aria-label="Example of an ARI-GRAM business system">
+      <div class="bar"><i></i><i></i><i></i><small>ARI-GRAM POS · Dashboard</small></div>
+      <div class="app">
+        <div class="side"><b>POS</b><span class="on">Dashboard</span><span>Sales</span><span>Inventory</span><span>Customers</span><span>Reports</span><span>Settings</span></div>
+        <div class="main">
+          <div class="kpis">
+            <div class="kpi"><small>Today's sales</small><b>KES 48,250</b></div>
+            <div class="kpi"><small>Transactions</small><b>126</b></div>
+            <div class="kpi"><small>Low stock</small><b>7 items</b></div>
+          </div>
+          <div class="chart"><i style="height:35%"></i><i style="height:52%"></i><i style="height:44%"></i><i style="height:68%"></i><i style="height:58%"></i><i style="height:80%"></i><i class="hi" style="height:92%"></i></div>
+          <div class="rows">
+            <div><span>Receipt</span><span>Payment</span></div>
+            <div><span>#10482 · KES 1,450</span><span class="pill ok">M-Pesa</span></div>
+            <div><span>#10481 · KES 820</span><span class="pill">Cash</span></div>
+            <div><span>#10480 · KES 3,200</span><span class="pill ok">M-Pesa</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="about">
+  <div class="wrap who">
+    <div>
+      <div class="sec-head" style="margin-bottom:24px">
+        <span class="num">01 · Who we are</span>
+        <h2>A software company that learns how your business works first.</h2>
+      </div>
+      <div class="copy">
+        <p>ARI-GRAM Technologies builds business software and digital platforms for companies in Kenya and beyond. We start with the way your team already works (the stock sheets, the payroll spreadsheet, the order book) and turn it into a system that is faster and easier to trust.</p>
+        <p>Websites, branding and support are part of what we do, but our focus is the software that runs the business behind them.</p>
+      </div>
+    </div>
+    <div class="diff">
+      <div><i>1</i><div><h4>Built around real operations</h4><p>We study the workflow before writing code, so the system fits the business, not the other way round.</p></div></div>
+      <div><i>2</i><div><h4>Made for the Kenyan market</h4><p>M-Pesa payments, KRA requirements, PAYE, NSSF and SHIF built in where they apply.</p></div></div>
+      <div><i>3</i><div><h4>We stay after launch</h4><p>Training, maintenance and improvements once your team is using the system day to day.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block soft" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">02 · What we do</span>
+      <h2>Four ways we help businesses work better.</h2>
+      <p>One partner for the software you run on and the digital presence your customers see.</p>
+    </div>
+    <div class="cards four">
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13.5 5l-3 14"/></svg></div>
+        <h3>Software Development</h3>
+        <p>Custom business applications built for your workflow.</p>
+        <ul><li>Custom applications</li><li>Workflow automation</li><li>API integrations</li></ul>
+        <a class="more" href="#">Learn more →</a>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8"/></svg></div>
+        <h3>Web Solutions</h3>
+        <p>Websites and web platforms that bring in customers.</p>
+        <ul><li>Business websites</li><li>E-commerce</li><li>Portals &amp; dashboards</li></ul>
+        <a class="more" href="#">Learn more →</a>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+        <h3>Business Systems</h3>
+        <p>Ready-built systems adapted to your company.</p>
+        <ul><li>POS &amp; inventory</li><li>HR &amp; payroll</li><li>ERP &amp; materials</li></ul>
+        <a class="more" href="#">Learn more →</a>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16M4.5 9h15M4.5 15h15"/></svg></div>
+        <h3>Digital Creative</h3>
+        <p>Brand identity and content that look as good as you work.</p>
+        <ul><li>Branding &amp; logos</li><li>Posters &amp; social media</li><li>Video editing</li></ul>
+        <a class="more" href="#">Learn more →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="solutions">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">03 · Our solutions</span>
+      <h2>Systems we have built for specific industries.</h2>
+      <p>Our own products, ready to set up for your company and adjust to how you work.</p>
+    </div>
+    <div class="sol">
+      <div class="item big">
+        <span class="tag">Construction</span>
+        <h3>CONSTRACTOR</h3>
+        <p>Construction materials management: purchase orders, deliveries between sites, store requests and approvals, all in one place and usable on a phone at the site.</p>
+        <div class="feat"><span>LPOs &amp; approvals</span><span>Site-to-site deliveries</span><span>Store requests</span><span>Printable documents</span></div>
+        <div class="mini">
+          <div><span>LPO-0142 · Cement 42.5N × 200</span><b>Approved</b></div>
+          <div><span>Delivery · Main store → Site B</span><b>In transit</b></div>
+          <div><span>Order · Site C · Steel bars</span><b>Pending</b></div>
+        </div>
+        <a class="btn btn-primary" style="align-self:flex-start;margin-top:8px" href="#contact">Request a demo</a>
+      </div>
+      <div class="item sm">
+        <span class="tag">Retail</span>
+        <h3>Retail POS</h3>
+        <p>Point of sale for Kenyan shops: M-Pesa and cash payments, stock tracking, receipts and daily sales reports.</p>
+        <a class="more" style="font-family:var(--head);font-weight:700;color:var(--blue);font-size:14px" href="#contact">Request a demo →</a>
+      </div>
+      <div class="item sm">
+        <span class="tag">HR &amp; Payroll</span>
+        <h3>Payroll &amp; HR</h3>
+        <p>Staff records and monthly payroll with PAYE, NSSF, SHIF and Housing Levy worked out for you, plus payslips.</p>
+        <a class="more" style="font-family:var(--head);font-weight:700;color:var(--blue);font-size:14px" href="#contact">Request a demo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block soft" id="industries">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">04 · Industries we serve</span>
+      <h2>Software shaped by the industry it runs in.</h2>
+    </div>
+    <div class="inds">
+      <div class="ind"><div class="dot"></div><b>Construction</b><small>Materials, sites and approvals</small></div>
+      <div class="ind"><div class="dot"></div><b>Retail</b><small>Sales, stock and payments</small></div>
+      <div class="ind"><div class="dot"></div><b>Corporate</b><small>HR, payroll and administration</small></div>
+      <div class="ind"><div class="dot"></div><b>SMEs</b><small>Websites and everyday tools</small></div>
+      <div class="ind"><div class="dot"></div><b>Professional services</b><small>Clients, records and bookings</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">05 · Featured projects</span>
+      <h2>Work that is live today.</h2>
+      <p>A selection of websites we have built for Kenyan businesses.</p>
+    </div>
+    <div class="proj">
+      <div class="pcard"><div class="shot"><div class="b"><i></i><i></i><i></i></div><div class="pg" style="background:#1B3A5C">Jowany Electricals</div></div>
+        <div class="body"><small>Business website</small><h4>Jowany Electricals</h4><p>Electrical supplies company: products, services and company profile.</p><a href="#">Visit site ↗</a></div></div>
+      <div class="pcard"><div class="shot"><div class="b"><i></i><i></i><i></i></div><div class="pg" style="background:#2B2B2B">Time Vault Kenya</div></div>
+        <div class="body"><small>Brand website</small><h4>Time Vault Kenya</h4><p>Watch and timepiece showcase built for brand presence.</p><a href="#">Visit site ↗</a></div></div>
+      <div class="pcard"><div class="shot"><div class="b"><i></i><i></i><i></i></div><div class="pg" style="background:#7A3E1D">My Meal Time</div></div>
+        <div class="body"><small>Food ordering</small><h4>My Meal Time</h4><p>Restaurant menu and meal ordering, kept simple and fast.</p><a href="#">Visit site ↗</a></div></div>
+      <div class="pcard"><div class="shot"><div class="b"><i></i><i></i><i></i></div><div class="pg" style="background:#4A3426">Connect Shop</div></div>
+        <div class="body"><small>Online shop</small><h4>AriGram Connect Shop</h4><p>Coffee and retail shop with product catalogue.</p><a href="#">Visit site ↗</a></div></div>
+    </div>
+    <p style="margin-top:14px;font-size:13px;color:var(--slate)">Mockup note: the real site will show actual screenshots of each project.</p>
+  </div>
+</section>
+
+<section class="block soft">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">06 · How we work</span>
+      <h2>From first conversation to everyday use.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><b>01</b><h4>Understand</h4><p>We learn how your business runs and what slows it down.</p></div>
+      <div class="step"><b>02</b><h4>Design</h4><p>You see screens and agree on the plan before we build.</p></div>
+      <div class="step"><b>03</b><h4>Build &amp; launch</h4><p>We build, test with your team and go live.</p></div>
+      <div class="step"><b>04</b><h4>Support</h4><p>Training, fixes and improvements as you grow.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="contact" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="cta-band">
+      <div>
+        <span class="eyebrow" style="margin-bottom:12px">07 · Let's talk</span>
+        <h2>Let's build something better.</h2>
+        <p>Tell us what your business needs. We'll reply with honest advice and a clear quote.</p>
+        <div class="contact-line" style="margin-top:22px"><span>WhatsApp <b>+254 726 875 878</b></span><span>Kenya · working with clients worldwide</span></div>
+      </div>
+      <div class="right actions">
+        <a class="btn btn-primary" href="#">Get a Quote</a>
+        <a class="btn btn-ghost" href="#">Chat on WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <a class="logo rev" href="#"><svg viewBox="0 0 64 64"><use href="#mark-rev"/></svg><div><b>ARI-GRAM</b><span>TECHNOLOGIES</span></div></a>
+        <p class="tagline">Technology. Innovation. Progress.<br>Business software and digital solutions.</p>
+      </div>
+      <div><h5>Company</h5><ul><li><a href="#">About</a></li><li><a href="#">Our Work</a></li><li><a href="#">Industries</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div><h5>Services</h5><ul><li><a href="#">Software Development</a></li><li><a href="#">Web Solutions</a></li><li><a href="#">Business Systems</a></li><li><a href="#">Digital Creative</a></li></ul></div>
+      <div><h5>Contact</h5><ul><li>+254 726 875 878</li><li>Email: company address</li><li>Kenya</li></ul></div>
+    </div>
+    <div class="legal"><span>© 2026 ARI-GRAM Technologies</span><span>Website: domain to be confirmed</span></div>
+  </div>
+</footer>
+
+</body>
+</html>

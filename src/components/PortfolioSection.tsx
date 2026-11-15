@@ -1,166 +1,85 @@
-import { ExternalLink } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowUpRight } from "lucide-react";
 
 const projects = [
   {
     title: "Jowany Electricals",
-    category: "Business Website",
-    description:
-      "A professional electrical supplies website showcasing products, services, and company credibility.",
-    tags: ["Business Site", "Product Showcase", "Branding"],
-    image:
-      "https://jowany-electricals.co.ke/image/product%2015.jpg",
+    category: "Business website",
+    description: "Electrical supplies company: products, services and company profile.",
+    image: "https://jowany-electricals.co.ke/image/product%2015.jpg",
     live: "https://jowany-electricals.co.ke/",
   },
   {
     title: "Time Vault Kenya",
-    category: "Business Website",
-    description:
-      "A premium watch and timepiece showcase website built for brand presence and customer trust.",
-    tags: ["React", "Landing Page", "Branding"],
+    category: "Brand website",
+    description: "Watch and timepiece showcase built for brand presence and customer trust.",
     image:
-      "https://images.unsplash.com/photo-1558505780-e7a9d70b4bab?q=80&w=1313&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1558505780-e7a9d70b4bab?auto=format&fit=crop&w=800&q=70",
     live: "https://time-vault-kenya.netlify.app/",
   },
   {
-    title: "AriGram Connect Shop",
-    category: "Online Shop",
-    description:
-      "A modern coffee and retail shop website designed for showcasing products and customer engagement.",
-    tags: ["React", "E-commerce", "UI/UX"],
-    image:
-      "https://images.unsplash.com/photo-1556742526-795a8eac090e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxzZWFyY2h8MXx8Y29mZmVlfGVufDB8fDB8fHww",
-    live: "https://arigram-connect-shop.netlify.app/",
-  },
-  {
     title: "My Meal Time",
-    category: "Food Ordering",
-    description:
-      "A restaurant and meal ordering platform focused on simplicity, speed, and visual appeal.",
-    tags: ["React", "Food App", "Ordering System"],
+    category: "Food ordering",
+    description: "Restaurant menu and meal ordering, kept simple and fast.",
     image:
-      "https://plus.unsplash.com/premium_photo-1745946640151-7bd1d1f93554?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE5fHx8ZW58MHx8fHx8",
+      "https://plus.unsplash.com/premium_photo-1745946640151-7bd1d1f93554?auto=format&fit=crop&w=800&q=70",
     live: "https://my-meal-time.netlify.app/",
   },
   {
-    title: "E-Commerce Platform",
-    category: "Web App",
-    description:
-      "Full-stack e-commerce solution with payment integration and inventory management.",
-    tags: ["React", "Node.js", "Stripe"],
+    title: "AriGram Connect Shop",
+    category: "Online shop",
+    description: "Coffee and retail shop with a product catalogue.",
     image:
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
-  },
-  {
-    title: "Workflow Automation",
-    category: "n8n Integration",
-    description:
-      "Automated lead processing and CRM sync for a marketing agency.",
-    tags: ["n8n", "API", "Webhooks"],
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-  },
-  {
-    title: "Business Dashboard",
-    category: "Web App",
-    description:
-      "Real-time analytics dashboard with custom reporting and data visualization.",
-    tags: ["React", "Charts", "Analytics"],
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1556742526-795a8eac090e?auto=format&fit=crop&w=800&q=70",
+    live: "https://arigram-connect-shop.netlify.app/",
   },
 ];
 
-export const PortfolioSection = () => {
-  return (
-    <section id="portfolio" className="py-24 relative">
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 glass-gold px-4 py-2 rounded-full mb-6">
-            <span className="text-sm font-mono text-gold">// Our Work</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            Featured <span className="text-gradient-premium">Projects</span>
-          </h2>
-          <p className="text-muted-foreground text-lg">
-            A selection of our recent work and solutions
-          </p>
+export const PortfolioSection = () => (
+  <section id="work" className="py-20 lg:py-28">
+    <div className="wrap">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div>
+          <span className="eyebrow">Featured projects</span>
+          <h2 className="section-title mt-4">Work that is live today.</h2>
         </div>
-
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
-            <div
-              key={project.title}
-              className="group relative overflow-hidden rounded-2xl bg-card border border-border hover:border-primary/50 transition-all duration-500"
-            >
-              {/* Image */}
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
-
-                {/* Category Badge */}
-                <div className="absolute top-4 left-4">
-                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-gold/90 text-gold-foreground">
-                    {project.category}
-                  </span>
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-                  {project.description}
-                </p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs font-mono px-2 py-1 rounded bg-secondary text-muted-foreground"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Links */}
-                {project.live && (
-                  <Button variant="ghost" size="sm" asChild>
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      View Project
-                    </a>
-                  </Button>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* CTA */}
-        <div className="text-center mt-12">
-          <p className="text-muted-foreground mb-4">
-            Want to see more of our work?
-          </p>
-          <Button variant="goldOutline" asChild>
-            <a href="#contact">Get in Touch</a>
-          </Button>
-        </div>
+        <p className="max-w-[380px] text-muted-foreground">A selection of websites we have built for Kenyan businesses.</p>
       </div>
-    </section>
-  );
-};
+
+      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {projects.map((p) => (
+          <a
+            key={p.title}
+            href={p.live}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex flex-col overflow-hidden rounded-xl border border-border bg-white transition-shadow hover:shadow-[0_14px_34px_rgba(20,24,32,0.10)]"
+          >
+            <div className="relative aspect-[16/11] overflow-hidden bg-sand">
+              {/* Fallback shown if the image fails to load */}
+              <span className="absolute inset-0 grid place-items-center p-4 text-center font-display text-lg font-extrabold text-ink/40">
+                {p.title}
+              </span>
+              <img
+                src={p.image}
+                alt={`${p.title} website`}
+                loading="lazy"
+                onError={(e) => {
+                  e.currentTarget.style.display = "none";
+                }}
+                className="relative h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              />
+            </div>
+            <div className="flex flex-1 flex-col gap-1.5 p-5">
+              <small className="font-display text-[11.5px] font-bold uppercase tracking-[0.1em] text-amber">{p.category}</small>
+              <h3 className="text-[17px] font-bold text-ink">{p.title}</h3>
+              <p className="text-[14px] text-muted-foreground">{p.description}</p>
+              <span className="mt-auto inline-flex items-center gap-1 pt-3 text-sm font-semibold text-brand-blue">
+                Visit site <ArrowUpRight className="h-4 w-4" />
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+);

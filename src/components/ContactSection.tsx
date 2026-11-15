@@ -4,13 +4,15 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Phone, Mail, MessageCircle, Send, MapPin } from "lucide-react";
+import { images } from "@/lib/images";
 import { useToast } from "@/hooks/use-toast";
 
 const serviceTypes = [
-  { value: "website", label: "Website & Apps" },
-  { value: "automation", label: "Automation (n8n)" },
-  { value: "software-issues", label: "Software Issues" },
-  { value: "consultation", label: "General Consultation" },
+  { value: "software", label: "Software Development" },
+  { value: "website", label: "Website / Web Platform" },
+  { value: "business-system", label: "Business System (POS, Payroll, CONSTRACTOR)" },
+  { value: "creative", label: "Branding & Digital Creative" },
+  { value: "support", label: "Support & Maintenance" },
   { value: "other", label: "Other" },
 ];
 
@@ -92,160 +94,111 @@ export const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-glow opacity-20" />
-      
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 glass-gold px-4 py-2 rounded-full mb-6">
-            <span className="text-sm font-mono text-gold">// Get in Touch</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            Ready to <span className="text-gradient-premium">Start?</span>
+    <section id="contact" className="pb-20 lg:pb-28">
+      {/* Call-to-action band */}
+      <div className="relative overflow-hidden bg-coal text-white">
+        <img src={images.nairobi(1920)} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+        <div className="photo-overlay absolute inset-0" />
+        <div className="wrap relative py-20 lg:py-24">
+          <span className="eyebrow">Let's talk</span>
+          <h2 className="mt-4 max-w-[640px] text-[34px] font-extrabold leading-[1.1] md:text-[46px]">
+            Let's build something better.
           </h2>
-          <p className="text-muted-foreground text-lg">
-            Let's discuss your project and find the best solution
+          <p className="mt-4 max-w-[520px] text-[17px] text-white/75">
+            Tell us what your business needs. We'll reply with honest advice and a clear quote.
           </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a href="#quote" className="btn btn-light">Get a Quote</a>
+            <a href="https://wa.me/254726875878" target="_blank" rel="noopener noreferrer" className="btn btn-ghost-light">
+              <MessageCircle className="h-4 w-4" /> Chat on WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Contact details + form */}
+      <div id="quote" className="wrap mt-16 grid gap-12 lg:mt-20 lg:grid-cols-[1fr_1.3fr] lg:gap-16">
+        <div>
+          <h3 className="text-2xl font-extrabold text-ink">Request a quote</h3>
+          <p className="mt-3 text-muted-foreground">
+            Share a few details about your project or the problem you need solved. We usually reply within one working day.
+          </p>
+          <ul className="mt-8 divide-y divide-border border-y border-border">
+            <li>
+              <a href="https://wa.me/254726875878" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 py-4 group">
+                <MessageCircle className="h-5 w-5 text-[#1DA851]" />
+                <span><b className="block text-sm text-ink">WhatsApp</b><span className="text-sm text-muted-foreground">+254 726 875 878</span></span>
+              </a>
+            </li>
+            <li>
+              <a href="tel:+254726875878" className="flex items-center gap-4 py-4">
+                <Phone className="h-5 w-5 text-brand-blue" />
+                <span><b className="block text-sm text-ink">Phone</b><span className="text-sm text-muted-foreground">+254 726 875 878</span></span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:ari.gram.technologies@gmail.com" className="flex items-center gap-4 py-4">
+                <Mail className="h-5 w-5 text-brand-blue" />
+                <span><b className="block text-sm text-ink">Email</b><span className="break-all text-sm text-muted-foreground">ari.gram.technologies@gmail.com</span></span>
+              </a>
+            </li>
+            <li className="flex items-center gap-4 py-4">
+              <MapPin className="h-5 w-5 text-muted-foreground" />
+              <span><b className="block text-sm text-ink">Location</b><span className="text-sm text-muted-foreground">Kenya · working with clients worldwide</span></span>
+            </li>
+          </ul>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          {/* Contact Info */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-semibold mb-4">Let's Talk</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Have a project in mind? Need help with software issues? 
-                We're here to help. Reach out and let's make it happen.
-              </p>
+        <form
+          className="space-y-5 rounded-xl border border-border bg-sand p-6 md:p-8"
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSubmit();
+          }}
+        >
+          <div className="grid gap-5 sm:grid-cols-2">
+            <div className="space-y-2">
+              <label htmlFor="cf-name" className="text-sm font-medium text-ink">Name</label>
+              <Input id="cf-name" placeholder="Your name" value={formData.name} onChange={(e) => handleChange("name", e.target.value)} className="bg-white" />
             </div>
-
-            <div className="space-y-4">
-              <a
-                href="https://wa.me/254726875878"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 glass rounded-xl p-4 hover:border-primary/50 transition-all group"
-              >
-                <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center">
-                  <MessageCircle className="w-6 h-6 text-green-500" />
-                </div>
-                <div>
-                  <p className="font-semibold group-hover:text-primary transition-colors">WhatsApp</p>
-                  <p className="text-sm text-muted-foreground font-mono">0726875878</p>
-                </div>
-              </a>
-
-              <a
-                href="tel:+254726875878"
-                className="flex items-center gap-4 glass rounded-xl p-4 hover:border-primary/50 transition-all group"
-              >
-                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
-                  <Phone className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <p className="font-semibold group-hover:text-primary transition-colors">Phone</p>
-                  <p className="text-sm text-muted-foreground font-mono">+254 726 875 878</p>
-                </div>
-              </a>
-
-              <a
-                href="mailto:ari.gram.technologies@gmail.com"
-                className="flex items-center gap-4 glass rounded-xl p-4 hover:border-primary/50 transition-all group"
-              >
-                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
-                  <Mail className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <p className="font-semibold group-hover:text-primary transition-colors">Email</p>
-                  <p className="text-sm text-muted-foreground font-mono">ari.gram.technologies@gmail.com</p>
-                </div>
-              </a>
-
-              <div className="flex items-center gap-4 glass rounded-xl p-4">
-                <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center">
-                  <MapPin className="w-6 h-6 text-muted-foreground" />
-                </div>
-                <div>
-                  <p className="font-semibold">Location</p>
-                  <p className="text-sm text-muted-foreground">Kenya, Remote Worldwide</p>
-                </div>
-              </div>
+            <div className="space-y-2">
+              <label htmlFor="cf-email" className="text-sm font-medium text-ink">Email</label>
+              <Input id="cf-email" type="email" placeholder="you@company.com" value={formData.email} onChange={(e) => handleChange("email", e.target.value)} className="bg-white" />
             </div>
           </div>
 
-          {/* Contact Form */}
-          <div className="glass rounded-2xl p-8 space-y-6">
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Name</label>
-                <Input
-                  placeholder="Your name"
-                  value={formData.name}
-                  onChange={(e) => handleChange("name", e.target.value)}
-                  className="bg-secondary/50 border-border focus:border-primary"
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Email</label>
-                <Input
-                  type="email"
-                  placeholder="your@email.com"
-                  value={formData.email}
-                  onChange={(e) => handleChange("email", e.target.value)}
-                  className="bg-secondary/50 border-border focus:border-primary"
-                />
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Service Type</label>
-              <Select
-                value={formData.service}
-                onValueChange={(value) => handleChange("service", value)}
-              >
-                <SelectTrigger className="bg-secondary/50 border-border focus:border-primary">
-                  <SelectValue placeholder="Select a service" />
-                </SelectTrigger>
-                <SelectContent>
-                  {serviceTypes.map((type) => (
-                    <SelectItem key={type.value} value={type.value}>
-                      {type.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Message</label>
-              <Textarea
-                placeholder="Tell us about your project or issue..."
-                rows={5}
-                value={formData.message}
-                onChange={(e) => handleChange("message", e.target.value)}
-                className="bg-secondary/50 border-border focus:border-primary resize-none"
-              />
-            </div>
-
-            <Button 
-              onClick={handleSubmit}
-              variant="gold" 
-              size="lg" 
-              className="w-full"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? (
-                "Sending..."
-              ) : (
-                <>
-                  Send Message
-                  <Send className="w-4 h-4" />
-                </>
-              )}
-            </Button>
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-ink">What do you need?</label>
+            <Select value={formData.service} onValueChange={(value) => handleChange("service", value)}>
+              <SelectTrigger className="bg-white">
+                <SelectValue placeholder="Select a service" />
+              </SelectTrigger>
+              <SelectContent>
+                {serviceTypes.map((type) => (
+                  <SelectItem key={type.value} value={type.value}>
+                    {type.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
-        </div>
+
+          <div className="space-y-2">
+            <label htmlFor="cf-message" className="text-sm font-medium text-ink">Message</label>
+            <Textarea
+              id="cf-message"
+              placeholder="Tell us about your business and what you'd like to build or fix..."
+              rows={5}
+              value={formData.message}
+              onChange={(e) => handleChange("message", e.target.value)}
+              className="resize-none bg-white"
+            />
+          </div>
+
+          <Button type="submit" size="lg" className="w-full font-display font-bold" disabled={isSubmitting}>
+            {isSubmitting ? "Sending..." : (<>Send message <Send className="h-4 w-4" /></>)}
+          </Button>
+        </form>
       </div>
     </section>
   );

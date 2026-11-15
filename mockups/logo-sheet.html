@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ARI-GRAM logo sheet</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; font-family: Manrope, system-ui, sans-serif; background: #F4F7FB; color: #0B1B33; padding: 32px 16px; }
+  h1 { font-size: 20px; margin: 0 0 24px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; max-width: 1100px; }
+  .tile { border-radius: 12px; padding: 32px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; min-height: 180px; border: 1px solid #DCE4EF; }
+  .tile small { font-size: 12px; color: #64748B; }
+  .light { background: #fff; } .dark { background: #092B59; } .dark small { color: #A9C3E6; }
+  .lockup { display: flex; align-items: center; gap: 12px; }
+  .word { line-height: 1; }
+  .word b { display: block; font-size: 26px; font-weight: 800; letter-spacing: -0.01em; color: #092B59; }
+  .word span { display: block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.42em; color: #1256A0; margin-top: 5px; }
+  .dark .word b { color: #fff; } .dark .word span { color: #8CC4FF; }
+  .mono svg * { fill: #0B1B33 !important; }
+  .white svg * { fill: #fff !important; }
+  .icons { display: flex; gap: 20px; align-items: end; }
+  .swatches { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .sw { width: 64px; text-align: center; font-size: 11px; color: #64748B; }
+  .sw i { display: block; height: 40px; border-radius: 8px; margin-bottom: 4px; border: 1px solid #DCE4EF; }
+</style>
+</head>
+<body>
+<h1>ARI-GRAM Technologies: logo sheet (concept: Geometric A)</h1>
+<div class="grid">
+  <div class="tile light">
+    <div class="lockup"><svg width="52" height="52" viewBox="0 0 64 64"><use href="#mark"/></svg>
+      <div class="word"><b>ARI-GRAM</b><span>TECHNOLOGIES</span></div></div>
+    <small>Primary, on white</small>
+  </div>
+  <div class="tile dark">
+    <div class="lockup white-legs"><svg width="52" height="52" viewBox="0 0 64 64"><use href="#mark-rev"/></svg>
+      <div class="word"><b>ARI-GRAM</b><span>TECHNOLOGIES</span></div></div>
+    <small>Reversed, on deep navy</small>
+  </div>
+  <div class="tile light mono">
+    <div class="lockup"><svg width="52" height="52" viewBox="0 0 64 64"><use href="#mark-mono"/></svg>
+      <div class="word"><b style="color:#0B1B33">ARI-GRAM</b><span style="color:#0B1B33">TECHNOLOGIES</span></div></div>
+    <small>One colour, for documents, stamps and print</small>
+  </div>
+  <div class="tile light">
+    <div class="icons">
+      <svg width="96" height="96" viewBox="0 0 64 64"><use href="#mark"/></svg>
+      <svg width="48" height="48" viewBox="0 0 64 64"><use href="#mark"/></svg>
+      <svg width="32" height="32" viewBox="0 0 64 64"><use href="#mark"/></svg>
+      <svg width="16" height="16" viewBox="0 0 64 64"><use href="#mark"/></svg>
+    </div>
+    <small>Icon only: app icon, favicon (still readable at 16px)</small>
+  </div>
+  <div class="tile light">
+    <div class="swatches">
+      <div class="sw"><i style="background:#092B59"></i>Deep Navy<br>#092B59</div>
+      <div class="sw"><i style="background:#1256A0"></i>Corporate<br>#1256A0</div>
+      <div class="sw"><i style="background:#168BFA"></i>Electric<br>#168BFA</div>
+      <div class="sw"><i style="background:#64748B"></i>Slate<br>#64748B</div>
+      <div class="sw"><i style="background:#FFFFFF"></i>White<br>#FFFFFF</div>
+    </div>
+    <small>Brand colours</small>
+  </div>
+</div>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <g id="mark">
+      <polygon points="4,58 27,5 37,5 16,58" fill="#092B59"/>
+      <polygon points="39,9 60,58 48,58 34,21" fill="#1256A0"/>
+      <rect x="19" y="39" width="22" height="7" rx="3.5" fill="#168BFA"/>
+      <circle cx="47" cy="42.5" r="4.5" fill="#168BFA"/>
+    </g>
+    <g id="mark-rev">
+      <polygon points="4,58 27,5 37,5 16,58" fill="#FFFFFF"/>
+      <polygon points="39,9 60,58 48,58 34,21" fill="#8CC4FF"/>
+      <rect x="19" y="39" width="22" height="7" rx="3.5" fill="#168BFA"/>
+      <circle cx="47" cy="42.5" r="4.5" fill="#168BFA"/>
+    </g>
+    <g id="mark-mono" fill="#0B1B33">
+      <polygon points="4,58 27,5 37,5 16,58"/>
+      <polygon points="39,9 60,58 48,58 34,21"/>
+      <rect x="19" y="39" width="22" height="7" rx="3.5"/>
+      <circle cx="47" cy="42.5" r="4.5"/>
+    </g>
+  </defs>
+</svg>
+</body>
+</html>
