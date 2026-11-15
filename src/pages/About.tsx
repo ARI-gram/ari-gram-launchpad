@@ -27,18 +27,18 @@ const ways = [
     link: { to: "/#services", label: "See our services" },
   },
   {
-    tag: "Our products",
-    title: "Ready business systems",
-    text: "Systems we've already built for specific industries, set up and adjusted for your company.",
-    points: ["CONSTRACTOR for construction", "Retail POS with M-Pesa", "Payroll & HR with Kenyan statutory deductions"],
+    tag: "Coming soon",
+    title: "Our own industry products",
+    text: "Systems we're building for specific industries. Early partners get to try them first and help shape them.",
+    points: ["CONSTRACTOR for construction", "Payroll & HR for Kenyan companies", "Retail POS for shops"],
     image: images.construction(900),
-    link: { to: "/#solutions", label: "Explore our solutions" },
+    link: { to: "/solutions", label: "See what's coming" },
   },
 ];
 
-const facts = [
-  { value: "3", text: "Business systems built: CONSTRACTOR, Retail POS, Payroll & HR" },
-  { value: "4", accent: "+", text: "Client websites live today" },
+const facts: { value: string; accent?: string; text: string }[] = [
+  { value: "3", text: "Industry products in development: CONSTRACTOR, Payroll & HR, Retail POS" },
+  { value: "3", text: "Client websites live today" },
   { value: "5", text: "Industries served, from construction to retail" },
   { value: "1", text: "Team from first idea to everyday support" },
 ];
@@ -55,9 +55,9 @@ const Story = () => (
           spreadsheet, the purchase orders waiting for a signature.
         </p>
         <p className="mt-4 text-[16.5px] leading-relaxed text-ink/75">
-          So we started building the systems for that too. Today ARI-GRAM designs and supports business software (point
-          of sale, payroll and HR, construction materials management) alongside the websites and brand work our clients
-          still rely on us for.
+          So we started building the systems for that too. Today ARI-GRAM builds custom software and websites for clients,
+          and is developing its own products for construction, payroll and retail, shaped by what we learned along the
+          way.
         </p>
 
         <ol className="mt-10 border-t border-border">
@@ -161,7 +161,7 @@ const TwoWays = () => (
         <span className="eyebrow">How we can help</span>
         <h2 className="section-title mt-4 max-w-[640px]">Two ways to work with ARI-GRAM.</h2>
         <p className="mt-4 max-w-[600px] text-[16.5px] text-muted-foreground">
-          Start with one of our ready systems, or have us build something new around your business.
+          Have us build something around your business today, or join early access to our own products.
         </p>
       </div>
       <div className="mt-12 grid gap-5 lg:grid-cols-2">

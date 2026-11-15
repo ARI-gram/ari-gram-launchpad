@@ -52,20 +52,20 @@ export const services: Service[] = [
   {
     id: "systems",
     name: "Business Systems",
-    title: "Ready systems, set up for your company.",
+    title: "Business systems shaped around your operations.",
     intro:
-      "Systems we've already built for specific industries. We configure them for your business, move your existing records in and train your team.",
+      "Point of sale, payroll and materials systems designed for how your company runs. We set them up, move your existing records in and train your team.",
     offers: [
-      { title: "Retail POS & inventory", text: "Sales, stock, M-Pesa and cash, receipts." },
+      { title: "Point of sale & inventory", text: "Sales, stock, M-Pesa and cash, receipts." },
       { title: "Payroll & HR", text: "PAYE, NSSF, SHIF, Housing Levy and payslips." },
-      { title: "CONSTRACTOR", text: "Construction materials, LPOs and site deliveries." },
+      { title: "Construction materials", text: "LPOs, approvals and site deliveries." },
       { title: "Setup & training", text: "Data migration and hands-on training for staff." },
     ],
-    goodFor: "shops, contractors and offices that want a proven system quickly.",
+    goodFor: "shops, contractors and offices that have outgrown spreadsheets and paper.",
     image: images.market(1000),
     imageAlt: "A busy market with many small shops",
-    cta: "Request a demo",
-    secondary: { label: "Explore solutions", to: "/#solutions" },
+    cta: "Ask about a system",
+    secondary: { label: "See our upcoming products", to: "/solutions" },
   },
   {
     id: "creative",
@@ -114,7 +114,7 @@ export const faqs = [
   },
   {
     q: "Do your systems support M-Pesa?",
-    a: "Yes. Our POS takes M-Pesa payments, and we can add M-Pesa to custom systems and websites.",
+    a: "Yes. We can build M-Pesa payments into the systems and websites we make for you.",
   },
   {
     q: "Do you work with clients outside Kenya?",

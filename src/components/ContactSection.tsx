@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Phone, Mail, MessageCircle, Send, MapPin } from "lucide-react";
 import { CtaBand } from "./CtaBand";
 import { useToast } from "@/hooks/use-toast";
+import { sendEnquiry } from "@/lib/enquiry";
 
 const serviceTypes = [
   { value: "software", label: "Software Development" },
@@ -40,44 +41,18 @@ export const ContactSection = () => {
 
     setIsSubmitting(true);
 
-    // EmailJS Configuration
-    const EMAILJS_SERVICE_ID = "service_s8yjkli";
-    const EMAILJS_TEMPLATE_ID = "template_5k5la8l";
-    const EMAILJS_PUBLIC_KEY = "7ByFLFdrTxP2BF5wv";
-
     try {
-      // Prepare template parameters
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        service_type: serviceTypes.find(s => s.value === formData.service)?.label || formData.service,
+      await sendEnquiry({
+        name: formData.name,
+        email: formData.email,
+        type: serviceTypes.find((s) => s.value === formData.service)?.label || formData.service,
         message: formData.message,
-        to_email: "ari.gram.technologies@gmail.com",
-      };
-
-      // Send email using EmailJS
-      const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          service_id: EMAILJS_SERVICE_ID,
-          template_id: EMAILJS_TEMPLATE_ID,
-          user_id: EMAILJS_PUBLIC_KEY,
-          template_params: templateParams,
-        }),
       });
-
-      if (response.ok) {
-        toast({
-          title: "Message Sent! ✓",
-          description: "We'll get back to you as soon as possible.",
-        });
-        setFormData({ name: "", email: "", service: "", message: "" });
-      } else {
-        throw new Error("Failed to send message");
-      }
+      toast({
+        title: "Message Sent! ✓",
+        description: "We'll get back to you as soon as possible.",
+      });
+      setFormData({ name: "", email: "", service: "", message: "" });
     } catch (error) {
       console.error("EmailJS Error:", error);
       toast({

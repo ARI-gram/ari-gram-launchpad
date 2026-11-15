@@ -21,7 +21,7 @@ const services = [
     icon: BarChart3,
     id: "systems",
     title: "Business Systems",
-    text: "Ready-built systems adapted to your company.",
+    text: "POS, payroll and materials systems shaped around your company.",
     items: ["POS & inventory", "HR & payroll", "ERP & materials"],
   },
   {

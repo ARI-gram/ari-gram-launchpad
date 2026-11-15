@@ -1,36 +1,31 @@
 import { ArrowUpRight } from "lucide-react";
 import { reveal } from "@/lib/reveal";
 
+/**
+ * Live client websites. Screenshots live in /public/work (1200x825).
+ * Jowany Electricals is held back: its domain (jowany-electricals.co.ke) no longer resolves.
+ * Add it back here once it has a working address.
+ */
 const projects = [
   {
-    title: "Jowany Electricals",
-    category: "Business website",
-    description: "Electrical supplies company: products, services and company profile.",
-    image: "https://jowany-electricals.co.ke/image/product%2015.jpg",
-    live: "https://jowany-electricals.co.ke/",
-  },
-  {
     title: "Time Vault Kenya",
-    category: "Brand website",
-    description: "Watch and timepiece showcase built for brand presence and customer trust.",
-    image:
-      "https://images.unsplash.com/photo-1558505780-e7a9d70b4bab?auto=format&fit=crop&w=800&q=70",
+    category: "Online store",
+    description: "Watch store for Kenyan buyers, with collections, product pages and Nairobi delivery.",
+    image: "/work/time-vault-kenya.jpg",
     live: "https://time-vault-kenya.netlify.app/",
   },
   {
-    title: "My Meal Time",
-    category: "Food ordering",
-    description: "Restaurant menu and meal ordering, kept simple and fast.",
-    image:
-      "https://plus.unsplash.com/premium_photo-1745946640151-7bd1d1f93554?auto=format&fit=crop&w=800&q=70",
+    title: "Kiosk Kitchen",
+    category: "Food ordering app",
+    description: "Meal ordering with customer, admin and owner accounts, built for quick phone sign-in.",
+    image: "/work/kiosk-kitchen.jpg",
     live: "https://my-meal-time.netlify.app/",
   },
   {
-    title: "AriGram Connect Shop",
+    title: "Duka Kenya",
     category: "Online shop",
-    description: "Coffee and retail shop with a product catalogue.",
-    image:
-      "https://images.unsplash.com/photo-1556742526-795a8eac090e?auto=format&fit=crop&w=800&q=70",
+    description: "Shop for Kenyan crafts, jewellery and coffee, with a story-led storefront.",
+    image: "/work/connect-shop.jpg",
     live: "https://arigram-connect-shop.netlify.app/",
   },
 ];
@@ -46,7 +41,7 @@ export const PortfolioSection = () => (
         <p className="max-w-[380px] text-muted-foreground">A selection of websites we have built for Kenyan businesses.</p>
       </div>
 
-      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((p, i) => (
           <a
             key={p.title}
@@ -68,7 +63,7 @@ export const PortfolioSection = () => (
                 onError={(e) => {
                   e.currentTarget.style.display = "none";
                 }}
-                className="relative h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                className="relative h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
               />
             </div>
             <div className="flex flex-1 flex-col gap-1.5 p-5">

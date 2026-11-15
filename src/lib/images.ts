@@ -18,4 +18,9 @@ export const images = {
   laptopWork: (w = 1000) => unsplash("1594077810908-9ffd89d704ac", w),
   designSwatches: (w = 1000) => unsplash("1561070791-2526d30994b5", w),
   supportDesk: (w = 1600) => unsplash("1604145559206-e3bce0040e2d", w),
+  officeMeeting: (w = 1920) => unsplash("1573164574511-73c773193279", w),
+  roofWorkers: (w = 1100) => unsplash("1740825961434-e9287638592b", w),
+  officeColleagues: (w = 1100) => unsplash("1573164574397-dd250bc8a598", w),
+  shopCounter: (w = 1100) => unsplash("1687422808311-a776f467a468", w),
+  stallPhone: (w = 1000) => unsplash("1687422809654-579d81c29d32", w),
 };

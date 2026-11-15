@@ -1,5 +1,6 @@
 import { ArrowRight, Check } from "lucide-react";
 import { reveal } from "@/lib/reveal";
+import { Link } from "react-router-dom";
 import { images } from "@/lib/images";
 
 const Tag = ({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) => (
@@ -19,9 +20,9 @@ export const SolutionsSection = () => (
     <div className="wrap">
       <div className="max-w-[640px]" {...reveal()}>
         <span className="eyebrow">Our solutions</span>
-        <h2 className="section-title mt-4">Systems we have built for specific industries.</h2>
+        <h2 className="section-title mt-4">Products we are building for specific industries.</h2>
         <p className="mt-4 text-[16.5px] text-muted-foreground">
-          Our own products, ready to set up for your company and adjust to how you work.
+          Our own systems for construction, retail and payroll are in development. Join early access to try them first and help shape them.
         </p>
       </div>
 
@@ -36,7 +37,7 @@ export const SolutionsSection = () => (
           />
           <div className="photo-overlay-even absolute inset-0" />
           <div className="relative mt-auto flex flex-col gap-4">
-            <Tag dark>Construction</Tag>
+            <Tag dark>Construction · In development</Tag>
             <h3 className="text-[30px] font-extrabold">CONSTRACTOR</h3>
             <p className="max-w-[520px] text-white/80">
               Construction materials management: purchase orders, deliveries between sites, store requests and
@@ -49,9 +50,9 @@ export const SolutionsSection = () => (
                 </li>
               ))}
             </ul>
-            <a href="#contact" className="btn btn-light mt-2 self-start">
-              Request a demo <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
+            <Link to="/solutions#constractor" className="btn btn-light mt-2 self-start">
+              See details <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
           </div>
         </article>
 
@@ -60,21 +61,21 @@ export const SolutionsSection = () => (
           <img src={images.market(900)} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105" />
           <div className="photo-overlay-even absolute inset-0" />
           <div className="relative mt-auto flex flex-col gap-3">
-            <Tag dark>Retail</Tag>
+            <Tag dark>Retail · Coming soon</Tag>
             <h3 className="text-[22px] font-bold">Retail POS</h3>
             <p className="text-[14.5px] text-white/80">
               Point of sale for Kenyan shops: M-Pesa and cash payments, stock tracking, receipts and daily sales
               reports.
             </p>
-            <a href="#contact" className="inline-flex items-center gap-1 font-display text-sm font-bold text-white">
-              Request a demo <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
+            <Link to="/solutions#pos" className="inline-flex items-center gap-1 font-display text-sm font-bold text-white">
+              See details <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
           </div>
         </article>
 
         {/* Payroll & HR */}
         <article className="group flex min-h-[260px] flex-col gap-3 rounded-xl border border-border bg-white p-7 transition-shadow hover:shadow-[0_14px_34px_rgba(20,24,32,0.08)]" {...reveal(280)}>
-          <Tag>HR &amp; Payroll</Tag>
+          <Tag>HR &amp; Payroll · In development</Tag>
           <h3 className="mt-1 text-[22px] font-bold text-ink">Payroll &amp; HR</h3>
           <p className="text-[14.5px] text-muted-foreground">
             Staff records and monthly payroll with PAYE, NSSF, SHIF and Housing Levy worked out for you, plus
@@ -87,9 +88,9 @@ export const SolutionsSection = () => (
               </span>
             ))}
           </div>
-          <a href="#contact" className="mt-auto inline-flex items-center gap-1 pt-2 font-display text-sm font-bold text-brand-blue">
-            Request a demo <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </a>
+          <Link to="/solutions#payroll" className="mt-auto inline-flex items-center gap-1 pt-2 font-display text-sm font-bold text-brand-blue">
+            See details <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
         </article>
       </div>
     </div>

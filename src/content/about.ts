@@ -21,12 +21,12 @@ export const milestones = [
   },
   {
     label: "Next",
-    title: "Business systems",
-    text: "Retail POS, payroll & HR and inventory tools built for Kenyan rules.",
+    title: "Custom business software",
+    text: "Systems built around how a client's team works: approvals, stock, reports.",
   },
   {
     label: "Now",
-    title: "Industry software",
-    text: "CONSTRACTOR for construction, and more systems shaped around specific industries.",
+    title: "Our own products",
+    text: "CONSTRACTOR, Payroll & HR and a retail POS, in development for specific industries.",
   },
 ];

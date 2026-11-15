@@ -5,7 +5,7 @@ import type { CSSProperties } from "react";
 
 const d = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
 
-const facts = ["Built in Kenya", "M-Pesa & KRA-ready systems", "Support after launch"];
+const facts = ["Built in Kenya", "Made for Kenyan businesses", "Support after launch"];
 
 const DashboardPreview = () => (
   <div
@@ -17,7 +17,7 @@ const DashboardPreview = () => (
       <i className="h-2 w-2 rounded-full bg-[#D6D3CB]" />
       <i className="h-2 w-2 rounded-full bg-[#D6D3CB]" />
       <i className="h-2 w-2 rounded-full bg-[#D6D3CB]" />
-      <span className="ml-2 text-[11px] text-muted-foreground">ARI-GRAM POS · Dashboard</span>
+      <span className="ml-2 text-[11px] text-muted-foreground">Example dashboard · Preview</span>
     </div>
     <div className="grid grid-cols-[112px_1fr]">
       <div className="flex flex-col gap-1 bg-coal px-2.5 py-3.5 text-white/60">
