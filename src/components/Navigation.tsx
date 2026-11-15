@@ -1,20 +1,23 @@
 import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "./Logo";
 
+/** Links to full pages use a path; links to homepage sections use "/#id" until those pages exist. */
 const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#services", label: "Services" },
-  { href: "#solutions", label: "Solutions" },
-  { href: "#industries", label: "Industries" },
-  { href: "#work", label: "Our Work" },
-  { href: "#contact", label: "Contact" },
+  { to: "/about", label: "About" },
+  { to: "/#services", label: "Services" },
+  { to: "/#solutions", label: "Solutions" },
+  { to: "/#industries", label: "Industries" },
+  { to: "/#work", label: "Our Work" },
+  { to: "/#contact", label: "Contact" },
 ];
 
 export const Navigation = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -22,6 +25,10 @@ export const Navigation = () => {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => setOpen(false), [pathname]);
+
+  const isActive = (to: string) => !to.includes("#") && pathname === to;
 
   return (
     <header
@@ -31,25 +38,32 @@ export const Navigation = () => {
       )}
     >
       <div className="wrap flex h-[68px] items-center justify-between">
-        <a href="#top" aria-label="ARI-GRAM Technologies home">
+        <Link to="/" aria-label="ARI-GRAM Technologies home">
           <Logo />
-        </a>
+        </Link>
 
         <nav className="hidden lg:block" aria-label="Main">
           <ul className="flex items-center gap-7 text-[14.5px] font-medium text-ink/70">
             {navLinks.map((l) => (
-              <li key={l.href}>
-                <a href={l.href} className="nav-link transition-colors hover:text-ink">
+              <li key={l.to}>
+                <Link
+                  to={l.to}
+                  aria-current={isActive(l.to) ? "page" : undefined}
+                  className={cn(
+                    "nav-link transition-colors hover:text-ink",
+                    isActive(l.to) && "font-semibold text-ink after:scale-x-100",
+                  )}
+                >
                   {l.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
         </nav>
 
-        <a href="#contact" className="btn btn-primary hidden lg:inline-flex">
+        <Link to="/#contact" className="btn btn-primary hidden lg:inline-flex">
           Get a Quote
-        </a>
+        </Link>
 
         <button
           type="button"
@@ -66,20 +80,24 @@ export const Navigation = () => {
         <div className="border-t border-border bg-white lg:hidden">
           <ul className="wrap flex flex-col py-3">
             {navLinks.map((l) => (
-              <li key={l.href}>
-                <a
-                  href={l.href}
+              <li key={l.to}>
+                <Link
+                  to={l.to}
                   onClick={() => setOpen(false)}
-                  className="block border-b border-border/70 py-3 font-medium text-ink/80 last:border-0"
+                  aria-current={isActive(l.to) ? "page" : undefined}
+                  className={cn(
+                    "block border-b border-border/70 py-3 font-medium text-ink/80",
+                    isActive(l.to) && "font-semibold text-ink",
+                  )}
                 >
                   {l.label}
-                </a>
+                </Link>
               </li>
             ))}
             <li className="pt-4">
-              <a href="#contact" onClick={() => setOpen(false)} className="btn btn-primary w-full">
+              <Link to="/#contact" onClick={() => setOpen(false)} className="btn btn-primary w-full">
                 Get a Quote
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

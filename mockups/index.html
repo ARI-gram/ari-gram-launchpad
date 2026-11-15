@@ -35,10 +35,14 @@
   <figure><figcaption>Phone · 390px</figcaption><div class="dev phone"><div class="vp" data-w="390" data-s="0.62"></div></div></figure>
 </div>
 <script>
+  const PAGE = (new URLSearchParams(location.search).get('page') || 'homepage') + '.html';
+  const NAME = { homepage: 'Homepage', about: 'About Us' }[PAGE.replace('.html','')] || PAGE;
+  document.querySelector('.top h1').textContent = 'ARI-GRAM Technologies · ' + NAME + ' mockup';
+  document.querySelector('.top a').href = PAGE;
   document.querySelectorAll('.vp').forEach(vp => {
     const w = +vp.dataset.w, s = +vp.dataset.s;
     const f = document.createElement('iframe');
-    f.src = 'homepage.html'; f.width = w; f.height = 900; f.scrolling = 'no';
+    f.src = PAGE; f.width = w; f.height = 900; f.scrolling = 'no';
     f.style.transform = `scale(${s})`;
     vp.style.width = (w * s) + 'px'; vp.style.height = (900 * s) + 'px';
     vp.appendChild(f);

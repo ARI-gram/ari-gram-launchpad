@@ -1,22 +1,23 @@
+import { Link } from "react-router-dom";
 import { Logo } from "./Logo";
 
 const columns = [
   {
     title: "Company",
     links: [
-      { label: "About", href: "#about" },
-      { label: "Our Work", href: "#work" },
-      { label: "Industries", href: "#industries" },
-      { label: "Contact", href: "#contact" },
+      { label: "About", href: "/about" },
+      { label: "Our Work", href: "/#work" },
+      { label: "Industries", href: "/#industries" },
+      { label: "Contact", href: "/#contact" },
     ],
   },
   {
     title: "Services",
     links: [
-      { label: "Software Development", href: "#services" },
-      { label: "Web Solutions", href: "#services" },
-      { label: "Business Systems", href: "#solutions" },
-      { label: "Digital Creative", href: "#services" },
+      { label: "Software Development", href: "/#services" },
+      { label: "Web Solutions", href: "/#services" },
+      { label: "Business Systems", href: "/#solutions" },
+      { label: "Digital Creative", href: "/#services" },
     ],
   },
 ];
@@ -39,9 +40,9 @@ export const Footer = () => (
             <ul className="space-y-2">
               {col.links.map((l) => (
                 <li key={l.label}>
-                  <a href={l.href} className="transition-colors hover:text-white">
+                  <Link to={l.href} className="transition-colors hover:text-white">
                     {l.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

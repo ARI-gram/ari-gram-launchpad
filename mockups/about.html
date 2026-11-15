@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About Us · ARI-GRAM Technologies</title>
+<link rel="icon" href="logo-mark.svg" type="image/svg+xml" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #092B59; --blue: #1256A0; --electric: #168BFA;
+    --ink: #141820; --coal: #0E1117; --sand: #F6F5F1; --amber: #D9952B;
+    --muted: #5B6170; --line: #E5E2DA;
+    --head: Manrope, system-ui, sans-serif; --body: Inter, system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--body); color: var(--ink); background: #fff; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, h4 { font-family: var(--head); line-height: 1.12; margin: 0; letter-spacing: -0.02em; }
+  p { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+  @media (min-width: 768px) { .wrap { padding: 0 32px; } }
+
+  .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: var(--head); font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--amber); }
+  .eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--amber); }
+  .title { font-size: clamp(30px, 4vw, 40px); font-weight: 800; margin-top: 16px; }
+  .lead { color: var(--muted); font-size: 16.5px; margin-top: 16px; }
+
+  .btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--head); font-weight: 700; font-size: 15px; padding: 12px 20px; border-radius: 8px; border: 1px solid transparent; white-space: nowrap; }
+  .btn-primary { background: var(--blue); color: #fff; }
+  .btn-light { background: #fff; color: var(--ink); }
+  .btn-ghost { border-color: rgba(255,255,255,.4); color: #fff; }
+
+  /* Header */
+  header { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.96); border-bottom: 1px solid var(--line); }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo svg { width: 36px; height: 36px; }
+  .logo b { display: block; font-family: var(--head); font-weight: 800; font-size: 19px; color: var(--navy); line-height: 1; }
+  .logo span { display: block; font-family: var(--head); font-weight: 700; font-size: 8px; letter-spacing: .42em; color: var(--blue); margin-top: 4px; line-height: 1; }
+  .logo.rev b { color: #fff; } .logo.rev span { color: #8CC4FF; }
+  .nav ul { display: none; list-style: none; margin: 0; padding: 0; gap: 28px; font-size: 14.5px; font-weight: 500; color: rgba(20,24,32,.7); }
+  .nav ul a.on { color: var(--ink); font-weight: 600; box-shadow: inset 0 -2px 0 var(--amber); padding-bottom: 6px; }
+  .nav .cta { display: none; }
+  .burger { width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 8px; display: grid; place-items: center; background: #fff; }
+  .burger i { width: 18px; height: 2px; background: var(--ink); box-shadow: 0 -6px 0 var(--ink), 0 6px 0 var(--ink); }
+  @media (min-width: 1024px) { .nav ul { display: flex; } .nav .cta { display: inline-flex; } .burger { display: none; } }
+
+  /* Page hero */
+  .phero { position: relative; color: #fff; background: var(--coal); overflow: hidden; }
+  .phero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .phero .ov { position: absolute; inset: 0; background: linear-gradient(100deg, rgba(12,16,24,.94) 0%, rgba(12,16,24,.82) 50%, rgba(9,43,89,.5) 100%); }
+  @media (max-width: 767px) { .phero .ov { background: linear-gradient(180deg, rgba(12,16,24,.86), rgba(12,16,24,.9)); } }
+  .phero .wrap { position: relative; padding-top: 72px; padding-bottom: 80px; }
+  .crumbs { font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 22px; }
+  .crumbs b { color: #fff; font-weight: 500; }
+  .phero h1 { font-size: clamp(36px, 5.5vw, 56px); font-weight: 800; max-width: 760px; margin-top: 18px; }
+  .phero p { color: rgba(255,255,255,.75); font-size: 17.5px; max-width: 600px; margin-top: 20px; }
+
+  section.b { padding: 80px 0; }
+  section.sand { background: var(--sand); }
+  @media (min-width: 1024px) { section.b { padding: 112px 0; } }
+
+  /* Story */
+  .story { display: grid; gap: 48px; }
+  @media (min-width: 1024px) { .story { grid-template-columns: 1.05fr 1fr; gap: 72px; align-items: center; } }
+  .story .copy p + p { margin-top: 16px; }
+  .story .copy p { color: rgba(20,24,32,.78); font-size: 16.5px; }
+  .story .pic { position: relative; }
+  .story .pic img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 12px; }
+  @media (min-width: 1024px) { .story .pic img { aspect-ratio: 5/6; } }
+  .quote { position: absolute; left: 20px; right: 20px; bottom: -28px; background: #fff; border-radius: 10px; padding: 20px 22px; box-shadow: 0 14px 34px rgba(20,24,32,.12); border-left: 3px solid var(--amber); }
+  .quote p { font-family: var(--head); font-weight: 700; font-size: 16px; color: var(--ink); line-height: 1.4; }
+  .quote small { display: block; margin-top: 8px; color: var(--muted); font-size: 13px; }
+  @media (min-width: 640px) { .quote { right: auto; max-width: 380px; } }
+
+  /* Timeline */
+  .timeline { margin-top: 40px; display: grid; gap: 0; border-top: 1px solid var(--line); }
+  .timeline > div { display: grid; grid-template-columns: 92px 1fr; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .timeline b { font-family: var(--head); color: var(--amber); font-size: 14px; }
+  .timeline h4 { font-size: 16.5px; } .timeline p { color: var(--muted); font-size: 14.5px; margin-top: 3px; }
+
+  /* Mission / vision */
+  .mv { display: grid; gap: 20px; margin-top: 48px; }
+  @media (min-width: 768px) { .mv { grid-template-columns: 1fr 1fr; } }
+  .mv article { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 32px; }
+  .mv article.dark { background: var(--coal); color: #fff; border-color: var(--coal); position: relative; overflow: hidden; }
+  .mv article.dark img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .28; }
+  .mv article.dark > * { position: relative; }
+  .mv small { font-family: var(--head); font-weight: 700; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--amber); }
+  .mv h3 { font-size: 24px; font-weight: 800; margin-top: 12px; line-height: 1.25; }
+  .mv p { margin-top: 14px; color: var(--muted); }
+  .mv .dark p { color: rgba(255,255,255,.75); }
+
+  /* Values */
+  .values { margin-top: 48px; display: grid; border-top: 2px solid var(--ink); }
+  @media (min-width: 768px) { .values { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .values { grid-template-columns: repeat(4, 1fr); } }
+  .values div { padding: 26px 24px 26px 0; border-bottom: 1px solid var(--line); }
+  @media (min-width: 1024px) { .values div { border-bottom: 0; border-right: 1px solid var(--line); padding: 28px 24px; } .values div:first-child { padding-left: 0; } .values div:last-child { border-right: 0; } }
+  .values span { font-family: var(--head); font-weight: 800; font-size: 34px; color: rgba(20,24,32,.12); line-height: 1; }
+  .values h4 { font-size: 18px; margin-top: 14px; } .values p { color: var(--muted); font-size: 14.5px; margin-top: 6px; }
+
+  /* Two ways */
+  .ways { display: grid; gap: 20px; margin-top: 48px; }
+  @media (min-width: 1024px) { .ways { grid-template-columns: 1fr 1fr; } }
+  .way { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: #fff; display: flex; flex-direction: column; }
+  .way .top { height: 190px; position: relative; }
+  .way .top img { width: 100%; height: 100%; object-fit: cover; }
+  .way .top .tag { position: absolute; top: 16px; left: 16px; background: #fff; border-radius: 99px; padding: 4px 12px; font-family: var(--head); font-weight: 700; font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; }
+  .way .body { padding: 28px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .way h3 { font-size: 22px; }
+  .way p { color: var(--muted); }
+  .way ul { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 8px; font-size: 14.5px; }
+  .way li { display: flex; gap: 10px; } .way li::before { content: "✓"; color: var(--amber); font-weight: 700; }
+  .way .more { margin-top: auto; padding-top: 10px; font-family: var(--head); font-weight: 700; font-size: 14px; color: var(--blue); }
+
+  /* Built so far */
+  .built { display: grid; gap: 40px; }
+  @media (min-width: 1024px) { .built { grid-template-columns: 1fr 1.3fr; gap: 72px; align-items: start; } }
+  .facts { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+  .facts div { padding: 26px 22px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #fff; }
+  .facts b { display: block; font-family: var(--head); font-weight: 800; font-size: 40px; color: var(--ink); line-height: 1; letter-spacing: -.02em; }
+  .facts b em { font-style: normal; color: var(--amber); }
+  .facts span { display: block; margin-top: 10px; font-size: 14px; color: var(--muted); }
+
+  /* Founder */
+  .founder { display: grid; gap: 32px; align-items: center; border: 1px solid var(--line); border-radius: 14px; padding: 24px; background: #fff; }
+  @media (min-width: 768px) { .founder { grid-template-columns: 260px 1fr; padding: 32px; gap: 40px; } }
+  .ph { aspect-ratio: 4/5; border-radius: 10px; background: repeating-linear-gradient(135deg, #EFEDE7 0 12px, #F6F5F1 12px 24px); display: grid; place-items: center; text-align: center; color: var(--muted); font-size: 13px; padding: 16px; border: 1px dashed #CFCAC0; }
+  .founder h3 { font-size: 26px; } .founder .role { color: var(--amber); font-family: var(--head); font-weight: 700; font-size: 14px; margin-top: 6px; }
+  .founder p { color: rgba(20,24,32,.78); margin-top: 16px; }
+  .note { display: inline-block; margin-top: 16px; font-size: 12.5px; background: #FFF6E6; color: #8A5A10; border: 1px solid #F2D9A8; border-radius: 6px; padding: 4px 10px; }
+
+  /* CTA */
+  .ctaband { position: relative; color: #fff; background: var(--coal); overflow: hidden; }
+  .ctaband img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .ctaband .ov { position: absolute; inset: 0; background: linear-gradient(100deg, rgba(12,16,24,.94), rgba(12,16,24,.8) 50%, rgba(9,43,89,.5)); }
+  @media (max-width: 767px) { .ctaband .ov { background: linear-gradient(180deg, rgba(12,16,24,.86), rgba(12,16,24,.9)); } }
+  .ctaband .wrap { position: relative; padding-top: 88px; padding-bottom: 88px; }
+  .ctaband h2 { font-size: clamp(32px, 4.5vw, 46px); font-weight: 800; max-width: 640px; margin-top: 16px; }
+  .ctaband p { color: rgba(255,255,255,.75); font-size: 17px; max-width: 520px; margin-top: 16px; }
+  .ctaband .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+
+  footer { background: var(--coal); color: rgba(255,255,255,.6); padding: 64px 0 32px; font-size: 14.5px; }
+  .fg { display: grid; gap: 40px; }
+  @media (min-width: 768px) { .fg { grid-template-columns: 1.5fr 1fr 1fr 1.2fr; } }
+  footer h5 { font-family: var(--head); color: #fff; font-size: 14px; margin: 0 0 16px; }
+  footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  .legal { margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.1); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <g id="mark"><polygon points="4,58 27,5 37,5 16,58" fill="#092B59"/><polygon points="39,9 60,58 48,58 34,21" fill="#1256A0"/><rect x="19" y="39" width="22" height="7" rx="3.5" fill="#168BFA"/><circle cx="47" cy="42.5" r="4.5" fill="#168BFA"/></g>
+  <g id="mark-rev"><polygon points="4,58 27,5 37,5 16,58" fill="#fff"/><polygon points="39,9 60,58 48,58 34,21" fill="#8CC4FF"/><rect x="19" y="39" width="22" height="7" rx="3.5" fill="#168BFA"/><circle cx="47" cy="42.5" r="4.5" fill="#168BFA"/></g>
+</defs></svg>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="homepage.html"><svg viewBox="0 0 64 64"><use href="#mark"/></svg><div><b>ARI-GRAM</b><span>TECHNOLOGIES</span></div></a>
+    <ul>
+      <li><a class="on" href="#">About</a></li><li><a href="#">Services</a></li><li><a href="#">Solutions</a></li>
+      <li><a href="#">Industries</a></li><li><a href="#">Our Work</a></li><li><a href="#">Contact</a></li>
+    </ul>
+    <a class="btn btn-primary cta" href="#">Get a Quote</a>
+    <button class="burger" aria-label="Menu"><i></i></button>
+  </div>
+</header>
+
+<!-- 1. Page hero -->
+<section class="phero">
+  <img src="https://images.unsplash.com/photo-1776039325116-af3714eea110?auto=format&fit=crop&w=1920&q=75" alt="" />
+  <div class="ov"></div>
+  <div class="wrap">
+    <div class="crumbs">Home &nbsp;/&nbsp; <b>About us</b></div>
+    <span class="eyebrow">About ARI-GRAM</span>
+    <h1>We build the software Kenyan businesses run on.</h1>
+    <p>A technology company focused on one thing: helping businesses operate better, manage their work and grow, with software that fits how they actually work.</p>
+  </div>
+</section>
+
+<!-- 2. Our story -->
+<section class="b">
+  <div class="wrap story">
+    <div class="copy">
+      <span class="eyebrow">Our story</span>
+      <h2 class="title">From websites to the systems behind the business.</h2>
+      <p style="margin-top:20px">ARI-GRAM started by building websites for local businesses. Working closely with those owners, we kept seeing the same thing: the real problems weren't on the website. They were in the stock book, the payroll spreadsheet, the purchase orders waiting for a signature.</p>
+      <p>So we started building the systems for that too. Today ARI-GRAM designs and supports business software (point of sale, payroll and HR, construction materials management) alongside the websites and brand work our clients still rely on us for.</p>
+
+      <div class="timeline">
+        <div><b>Start</b><div><h4>Websites for local businesses</h4><p>Business sites, online shops and brand work for Kenyan SMEs.</p></div></div>
+        <div><b>Next</b><div><h4>Business systems</h4><p>Retail POS, payroll &amp; HR and inventory tools built for Kenyan rules.</p></div></div>
+        <div><b>Now</b><div><h4>Industry software</h4><p>CONSTRACTOR for construction, and more systems shaped around specific industries.</p></div></div>
+      </div>
+    </div>
+    <div class="pic">
+      <img src="https://images.unsplash.com/photo-1655720357872-ce227e4164ba?auto=format&fit=crop&w=1000&q=75" alt="Colleagues working together on a laptop" />
+      <div class="quote"><p>“Understand the business first. Then build the software.”</p><small>The principle behind every ARI-GRAM project</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Mission & vision -->
+<section class="b sand">
+  <div class="wrap">
+    <span class="eyebrow">Why we exist</span>
+    <h2 class="title" style="max-width:640px">Practical technology for businesses that are growing.</h2>
+    <div class="mv">
+      <article class="dark">
+        <img src="https://images.unsplash.com/photo-1781504842018-c51ce0dac23f?auto=format&fit=crop&w=1000&q=60" alt="" />
+        <small>Our mission</small>
+        <h3>To help businesses operate better, manage their work and grow through software that fits them.</h3>
+        <p>We do it by learning how a business runs before we build, and staying with our clients after launch.</p>
+      </article>
+      <article>
+        <small>Our vision</small>
+        <h3>A Kenya where every growing business runs on systems it can trust.</h3>
+        <p>Where a shop, a contractor or an office of twenty people has the same quality of tools as a large company, at a cost that makes sense.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Values -->
+<section class="b">
+  <div class="wrap">
+    <span class="eyebrow">What we stand for</span>
+    <h2 class="title" style="max-width:640px">How we work with every client.</h2>
+    <div class="values">
+      <div><span>01</span><h4>Understand first</h4><p>We learn your workflow before we suggest anything. No templates forced onto your business.</p></div>
+      <div><span>02</span><h4>Honest advice</h4><p>Clear quotes, realistic timelines, and we'll tell you when you don't need something.</p></div>
+      <div><span>03</span><h4>Built to last</h4><p>Clean, maintainable software that keeps working as your business grows.</p></div>
+      <div><span>04</span><h4>Here after launch</h4><p>Training, support and improvements. We don't disappear after handover.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Two ways we work -->
+<section class="b sand">
+  <div class="wrap">
+    <span class="eyebrow">How we can help</span>
+    <h2 class="title" style="max-width:640px">Two ways to work with ARI-GRAM.</h2>
+    <p class="lead" style="max-width:600px">Start with one of our ready systems, or have us build something new around your business.</p>
+    <div class="ways">
+      <div class="way">
+        <div class="top"><img src="https://images.unsplash.com/photo-1739302750702-e26a61113758?auto=format&fit=crop&w=900&q=70" alt="" /><span class="tag">Client projects</span></div>
+        <div class="body">
+          <h3>Custom software &amp; websites</h3>
+          <p>We design and build around your exact needs, from a company website to a full internal system.</p>
+          <ul><li>Discovery and planning with your team</li><li>Design you approve before we build</li><li>Launch, training and ongoing support</li></ul>
+          <a class="more" href="#">See our services →</a>
+        </div>
+      </div>
+      <div class="way">
+        <div class="top"><img src="https://images.unsplash.com/photo-1700469919563-ef267d459da5?auto=format&fit=crop&w=900&q=70" alt="" /><span class="tag">Our products</span></div>
+        <div class="body">
+          <h3>Ready business systems</h3>
+          <p>Systems we've already built for specific industries, set up and adjusted for your company.</p>
+          <ul><li>CONSTRACTOR for construction</li><li>Retail POS with M-Pesa</li><li>Payroll &amp; HR with Kenyan statutory deductions</li></ul>
+          <a class="more" href="#">Explore our solutions →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Built so far -->
+<section class="b">
+  <div class="wrap built">
+    <div>
+      <span class="eyebrow">Built so far</span>
+      <h2 class="title">Real work, not promises.</h2>
+      <p class="lead">We'd rather show you what we've built than talk about how big we are. Every number here is something you can see.</p>
+      <a class="btn btn-primary" style="margin-top:28px" href="#">View our work →</a>
+    </div>
+    <div class="facts">
+      <div><b>3</b><span>Business systems built: CONSTRACTOR, Retail POS, Payroll &amp; HR</span></div>
+      <div><b>4<em>+</em></b><span>Client websites live today</span></div>
+      <div><b>5</b><span>Industries served, from construction to retail</span></div>
+      <div><b>1</b><span>Team from first idea to everyday support</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Founder -->
+<section class="b sand">
+  <div class="wrap">
+    <span class="eyebrow">The people behind it</span>
+    <h2 class="title" style="max-width:640px;margin-bottom:40px">Led by a builder, not a salesperson.</h2>
+    <div class="founder">
+      <div class="ph">Founder photo<br>(to be added)</div>
+      <div>
+        <h3>[Founder name]</h3>
+        <div class="role">Founder &amp; Lead Developer</div>
+        <p>[Two or three sentences in your own words: your background, why you started ARI-GRAM, and what you care about when you build for a client.]</p>
+        <p>Every project is led directly by the founder, so you speak to the person who designs and builds your system.</p>
+        <span class="note">Mockup placeholder: needs your name, photo and short bio</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. CTA -->
+<section class="ctaband">
+  <img src="https://images.unsplash.com/photo-1781504842018-c51ce0dac23f?auto=format&fit=crop&w=1920&q=75" alt="" />
+  <div class="ov"></div>
+  <div class="wrap">
+    <span class="eyebrow">Work with us</span>
+    <h2>Let's talk about how your business runs.</h2>
+    <p>Tell us what's slowing you down. We'll come back with honest advice and a clear plan.</p>
+    <div class="actions"><a class="btn btn-light" href="#">Get a Quote</a><a class="btn btn-ghost" href="#">Chat on WhatsApp</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fg">
+      <div><a class="logo rev" href="#"><svg viewBox="0 0 64 64"><use href="#mark-rev"/></svg><div><b>ARI-GRAM</b><span>TECHNOLOGIES</span></div></a>
+        <p style="margin-top:16px;max-width:280px">Technology. Innovation. Progress.<br>Business software and digital solutions.</p></div>
+      <div><h5>Company</h5><ul><li>About</li><li>Our Work</li><li>Industries</li><li>Contact</li></ul></div>
+      <div><h5>Services</h5><ul><li>Software Development</li><li>Web Solutions</li><li>Business Systems</li><li>Digital Creative</li></ul></div>
+      <div><h5>Contact</h5><ul><li>WhatsApp +254 726 875 878</li><li>ari.gram.technologies@gmail.com</li><li>Kenya</li></ul></div>
+    </div>
+    <div class="legal"><span>© 2026 ARI-GRAM Technologies. All rights reserved.</span><span>Built in Kenya</span></div>
+  </div>
+</footer>
+</body>
+</html>

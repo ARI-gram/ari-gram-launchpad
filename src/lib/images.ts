@@ -11,4 +11,6 @@ export const images = {
   construction: (w = 1200) => unsplash("1700469919563-ef267d459da5", w),
   market: (w = 900) => unsplash("1558907530-fe311178388a", w),
   nairobi: (w = 1920) => unsplash("1781504842018-c51ce0dac23f", w),
+  officeLaptops: (w = 1920) => unsplash("1776039325116-af3714eea110", w),
+  storyTeam: (w = 1000) => unsplash("1655720357872-ce227e4164ba", w),
 };
