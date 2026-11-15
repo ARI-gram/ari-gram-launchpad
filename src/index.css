@@ -96,6 +96,24 @@
     @apply border border-white/40 text-white hover:border-white hover:bg-white/10;
   }
 
+  .btn-primary,
+  .btn-light {
+    @apply hover:-translate-y-px hover:shadow-[0_10px_24px_rgba(12,16,24,0.18)];
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+
+  /* Animated underline for navigation links */
+  .nav-link {
+    @apply relative;
+  }
+  .nav-link::after {
+    content: "";
+    @apply absolute -bottom-1.5 left-0 h-[2px] w-full origin-left scale-x-0 rounded bg-amber transition-transform duration-300;
+  }
+  .nav-link:hover::after {
+    @apply scale-x-100;
+  }
+
   .photo-overlay {
     background: linear-gradient(100deg, rgba(12, 16, 24, 0.94) 0%, rgba(12, 16, 24, 0.82) 45%, rgba(9, 43, 89, 0.55) 100%);
   }
@@ -108,5 +126,131 @@
 
   .photo-overlay-even {
     background: linear-gradient(180deg, rgba(12, 16, 24, 0.55) 0%, rgba(12, 16, 24, 0.9) 100%);
+  }
+}
+
+/* ---------- Motion ---------- */
+
+:root {
+  --ease-out: cubic-bezier(0.16, 0.84, 0.3, 1);
+}
+
+/* Scroll reveal: hidden only once JS has marked the page ready */
+.reveal-ready [data-reveal] {
+  transition:
+    opacity 0.8s var(--ease-out),
+    transform 0.8s var(--ease-out),
+    clip-path 1s var(--ease-out),
+    box-shadow 0.3s ease,
+    background-color 0.2s ease;
+  transition-delay: var(--d, 0ms);
+}.reveal-ready [data-reveal="up"]:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(28px);
+}
+.reveal-ready [data-reveal="fade"]:not(.is-visible) {
+  opacity: 0;
+}
+.reveal-ready [data-reveal="zoom"]:not(.is-visible) {
+  opacity: 0;
+  transform: scale(0.96);
+  clip-path: inset(6% 6% 6% 6% round 12px);
+}
+.reveal-ready [data-reveal="zoom"].is-visible {
+  clip-path: inset(0 0 0 0 round 12px);
+}
+/* Lines that draw in from the left (process steps, dividers) */
+.reveal-ready [data-reveal="line"] {
+  position: relative;
+}
+.reveal-ready [data-reveal="line"]::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -2px;
+  height: 2px;
+  background: currentColor;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 1s var(--ease-out);
+  transition-delay: var(--d, 0ms);
+}
+.reveal-ready [data-reveal="line"].is-visible::before {
+  transform: scaleX(1);
+}
+
+/* Hero entrance on page load */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes settle {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes grow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+@keyframes float-soft {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.anim-rise {
+  opacity: 0;
+  animation: rise 0.9s var(--ease-out) forwards;
+  animation-delay: var(--d, 0ms);
+}
+.anim-settle {
+  animation: settle 2.4s var(--ease-out) both;
+}
+.anim-grow {
+  transform-origin: bottom;
+  animation: grow 0.9s var(--ease-out) both;
+  animation-delay: var(--d, 0ms);
+}
+.anim-float {
+  animation: float-soft 6s ease-in-out 1.6s infinite;
+}
+
+/* Respect visitors who turn animations off */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+  .reveal-ready [data-reveal]:not(.is-visible),
+  .anim-rise {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
   }
 }

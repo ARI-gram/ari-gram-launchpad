@@ -1,4 +1,5 @@
 import { ArrowUpRight, BarChart3, Code2, Monitor, Palette } from "lucide-react";
+import { reveal } from "@/lib/reveal";
 
 const services = [
   {
@@ -31,19 +32,19 @@ export const ServicesSection = () => (
   <section id="services" className="bg-sand py-20 lg:py-28">
     <div className="wrap">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-        <div className="max-w-[620px]">
+        <div className="max-w-[620px]" {...reveal()}>
           <span className="eyebrow">What we do</span>
           <h2 className="section-title mt-4">Four ways we help businesses work better.</h2>
         </div>
-        <p className="max-w-[380px] text-[16px] text-muted-foreground">
+        <p className="max-w-[380px] text-[16px] text-muted-foreground" {...reveal(120)}>
           One partner for the software you run on and the digital presence your customers see.
         </p>
       </div>
 
       <div className="mt-12 grid overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4" style={{ gap: 1 }}>
-        {services.map(({ icon: Icon, title, text, items }) => (
-          <article key={title} className="group flex flex-col gap-3 bg-white p-7 transition-colors hover:bg-[#FBFAF7]">
-            <Icon className="h-7 w-7 text-brand-blue" strokeWidth={1.6} />
+        {services.map(({ icon: Icon, title, text, items }, i) => (
+          <article key={title} className="group flex flex-col gap-3 bg-white p-7 transition-colors hover:bg-[#FBFAF7]" {...reveal(i * 110)}>
+            <Icon className="h-7 w-7 text-brand-blue transition-transform duration-300 group-hover:-translate-y-1" strokeWidth={1.6} />
             <h3 className="mt-3 text-[19px] font-bold text-ink">{title}</h3>
             <p className="text-[14.5px] text-muted-foreground">{text}</p>
             <ul className="mt-1 space-y-1.5 text-[14px] text-ink/80">

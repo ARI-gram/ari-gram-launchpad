@@ -8,8 +8,11 @@ import { PortfolioSection } from "@/components/PortfolioSection";
 import { ProcessSection } from "@/components/ProcessSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
+import { useReveal } from "@/hooks/use-reveal";
 
-const Index = () => (
+const Index = () => {
+  useReveal();
+  return (
   <>
     <Navigation />
     <main>
@@ -24,6 +27,7 @@ const Index = () => (
     </main>
     <Footer />
   </>
-);
+  );
+};
 
 export default Index;

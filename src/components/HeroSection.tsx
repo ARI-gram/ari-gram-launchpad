@@ -1,5 +1,9 @@
 import { ArrowRight, Check } from "lucide-react";
 import { images } from "@/lib/images";
+import { CountUp } from "./CountUp";
+import type { CSSProperties } from "react";
+
+const d = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
 
 const facts = ["Built in Kenya", "M-Pesa & KRA-ready systems", "Support after launch"];
 
@@ -27,19 +31,25 @@ const DashboardPreview = () => (
       <div className="grid content-start gap-3 p-3.5">
         <div className="grid grid-cols-3 gap-2">
           {[
-            ["Today's sales", "KES 48,250"],
-            ["Transactions", "126"],
-            ["Low stock", "7 items"],
-          ].map(([k, v]) => (
+            { k: "Today's sales", to: 48250, prefix: "KES " },
+            { k: "Transactions", to: 126 },
+            { k: "Low stock", to: 7, suffix: " items" },
+          ].map(({ k, to, prefix, suffix }) => (
             <div key={k} className="rounded-lg border border-border px-2.5 py-2">
               <small className="text-[10.5px] text-muted-foreground">{k}</small>
-              <b className="block font-display text-[15px] text-ink">{v}</b>
+              <b className="block font-display text-[15px] tabular-nums text-ink">
+                <CountUp to={to} prefix={prefix} suffix={suffix} delay={900} />
+              </b>
             </div>
           ))}
         </div>
         <div className="flex h-[88px] items-end gap-1.5 rounded-lg border border-border p-2.5">
           {[35, 52, 44, 68, 58, 80, 92].map((h, i) => (
-            <i key={i} className={i === 6 ? "flex-1 rounded-t bg-brand-blue" : "flex-1 rounded-t bg-[#DCE6F2]"} style={{ height: `${h}%` }} />
+            <i
+              key={i}
+              className={i === 6 ? "anim-grow flex-1 rounded-t bg-brand-blue" : "anim-grow flex-1 rounded-t bg-[#DCE6F2]"}
+              style={{ height: `${h}%`, ...d(900 + i * 90) }}
+            />
           ))}
         </div>
         <div className="rounded-lg border border-border">
@@ -74,30 +84,30 @@ export const HeroSection = () => (
       srcSet={`${images.heroTeam(900)} 900w, ${images.heroTeam(1400)} 1400w, ${images.heroTeam(1920)} 1920w`}
       sizes="100vw"
       alt=""
-      className="absolute inset-0 h-full w-full object-cover"
-      fetchPriority="high"
+      className="anim-settle absolute inset-0 h-full w-full object-cover"
+      {...{ fetchpriority: "high" }}
     />
     <div className="photo-overlay absolute inset-0" />
 
     <div className="wrap relative grid gap-12 py-16 md:py-24 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:py-28">
       <div>
-        <span className="eyebrow">Business Technology &amp; Software Solutions</span>
-        <h1 className="mt-5 text-[38px] font-extrabold leading-[1.08] md:text-[56px]">
+        <span className="eyebrow anim-rise" style={d(100)}>Business Technology &amp; Software Solutions</span>
+        <h1 className="anim-rise mt-5 text-[38px] font-extrabold leading-[1.08] md:text-[56px]" style={d(220)}>
           Technology that moves businesses forward.
         </h1>
-        <p className="mt-5 max-w-[540px] text-[17px] leading-relaxed text-white/75">
+        <p style={d(380)} className="anim-rise mt-5 max-w-[540px] text-[17px] leading-relaxed text-white/75">
           We design, build and support software for how your business actually runs: point of sale, inventory,
           payroll, construction materials, and the websites your customers find you on.
         </p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <a href="#services" className="btn btn-light">
-            Explore our services <ArrowRight className="h-4 w-4" />
+        <div className="anim-rise mt-8 flex flex-wrap gap-3" style={d(520)}>
+          <a href="#services" className="btn btn-light group">
+            Explore our services <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
           <a href="#contact" className="btn btn-ghost-light">
             Talk to our team
           </a>
         </div>
-        <ul className="mt-9 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/70">
+        <ul style={d(660)} className="anim-rise mt-9 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/70">
           {facts.map((f) => (
             <li key={f} className="flex items-center gap-2">
               <Check className="h-4 w-4 text-amber" /> {f}
@@ -106,8 +116,10 @@ export const HeroSection = () => (
         </ul>
       </div>
 
-      <div className="hidden md:block">
-        <DashboardPreview />
+      <div className="anim-rise hidden md:block" style={d(500)}>
+        <div className="anim-float">
+          <DashboardPreview />
+        </div>
       </div>
     </div>
   </section>

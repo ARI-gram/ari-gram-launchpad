@@ -39,7 +39,7 @@ export const Navigation = () => {
           <ul className="flex items-center gap-7 text-[14.5px] font-medium text-ink/70">
             {navLinks.map((l) => (
               <li key={l.href}>
-                <a href={l.href} className="transition-colors hover:text-ink">
+                <a href={l.href} className="nav-link transition-colors hover:text-ink">
                   {l.label}
                 </a>
               </li>

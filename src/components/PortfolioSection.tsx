@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { reveal } from "@/lib/reveal";
 
 const projects = [
   {
@@ -38,7 +39,7 @@ export const PortfolioSection = () => (
   <section id="work" className="py-20 lg:py-28">
     <div className="wrap">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-        <div>
+        <div {...reveal()}>
           <span className="eyebrow">Featured projects</span>
           <h2 className="section-title mt-4">Work that is live today.</h2>
         </div>
@@ -46,9 +47,10 @@ export const PortfolioSection = () => (
       </div>
 
       <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {projects.map((p) => (
+        {projects.map((p, i) => (
           <a
             key={p.title}
+            {...reveal(i * 100)}
             href={p.live}
             target="_blank"
             rel="noopener noreferrer"
@@ -74,7 +76,7 @@ export const PortfolioSection = () => (
               <h3 className="text-[17px] font-bold text-ink">{p.title}</h3>
               <p className="text-[14px] text-muted-foreground">{p.description}</p>
               <span className="mt-auto inline-flex items-center gap-1 pt-3 text-sm font-semibold text-brand-blue">
-                Visit site <ArrowUpRight className="h-4 w-4" />
+                Visit site <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </span>
             </div>
           </a>

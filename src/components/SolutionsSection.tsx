@@ -1,4 +1,5 @@
 import { ArrowRight, Check } from "lucide-react";
+import { reveal } from "@/lib/reveal";
 import { images } from "@/lib/images";
 
 const Tag = ({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) => (
@@ -16,7 +17,7 @@ const Tag = ({ children, dark = false }: { children: React.ReactNode; dark?: boo
 export const SolutionsSection = () => (
   <section id="solutions" className="py-20 lg:py-28">
     <div className="wrap">
-      <div className="max-w-[640px]">
+      <div className="max-w-[640px]" {...reveal()}>
         <span className="eyebrow">Our solutions</span>
         <h2 className="section-title mt-4">Systems we have built for specific industries.</h2>
         <p className="mt-4 text-[16.5px] text-muted-foreground">
@@ -26,12 +27,12 @@ export const SolutionsSection = () => (
 
       <div className="mt-12 grid gap-5 lg:grid-cols-[1.25fr_1fr] lg:grid-rows-2">
         {/* CONSTRACTOR */}
-        <article className="relative flex min-h-[460px] flex-col overflow-hidden rounded-xl bg-coal p-7 text-white md:p-9 lg:row-span-2">
+        <article className="group relative flex min-h-[460px] flex-col overflow-hidden rounded-xl bg-coal p-7 text-white md:p-9 lg:row-span-2" {...reveal(0)}>
           <img
             src={images.construction(1200)}
             alt=""
             loading="lazy"
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
           />
           <div className="photo-overlay-even absolute inset-0" />
           <div className="relative mt-auto flex flex-col gap-4">
@@ -49,14 +50,14 @@ export const SolutionsSection = () => (
               ))}
             </ul>
             <a href="#contact" className="btn btn-light mt-2 self-start">
-              Request a demo <ArrowRight className="h-4 w-4" />
+              Request a demo <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
           </div>
         </article>
 
         {/* Retail POS */}
-        <article className="relative flex min-h-[260px] flex-col overflow-hidden rounded-xl bg-coal p-7 text-white">
-          <img src={images.market(900)} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+        <article className="group relative flex min-h-[260px] flex-col overflow-hidden rounded-xl bg-coal p-7 text-white" {...reveal(140)}>
+          <img src={images.market(900)} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105" />
           <div className="photo-overlay-even absolute inset-0" />
           <div className="relative mt-auto flex flex-col gap-3">
             <Tag dark>Retail</Tag>
@@ -66,13 +67,13 @@ export const SolutionsSection = () => (
               reports.
             </p>
             <a href="#contact" className="inline-flex items-center gap-1 font-display text-sm font-bold text-white">
-              Request a demo <ArrowRight className="h-4 w-4" />
+              Request a demo <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
           </div>
         </article>
 
         {/* Payroll & HR */}
-        <article className="flex min-h-[260px] flex-col gap-3 rounded-xl border border-border bg-white p-7">
+        <article className="group flex min-h-[260px] flex-col gap-3 rounded-xl border border-border bg-white p-7 transition-shadow hover:shadow-[0_14px_34px_rgba(20,24,32,0.08)]" {...reveal(280)}>
           <Tag>HR &amp; Payroll</Tag>
           <h3 className="mt-1 text-[22px] font-bold text-ink">Payroll &amp; HR</h3>
           <p className="text-[14.5px] text-muted-foreground">
@@ -87,7 +88,7 @@ export const SolutionsSection = () => (
             ))}
           </div>
           <a href="#contact" className="mt-auto inline-flex items-center gap-1 pt-2 font-display text-sm font-bold text-brand-blue">
-            Request a demo <ArrowRight className="h-4 w-4" />
+            Request a demo <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
         </article>
       </div>

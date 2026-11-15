@@ -1,4 +1,5 @@
 import { images } from "@/lib/images";
+import { reveal } from "@/lib/reveal";
 
 const points = [
   {
@@ -20,6 +21,7 @@ export const AboutSection = () => (
     <div className="wrap grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:gap-16">
       <div className="relative">
         <img
+          {...reveal(0, "zoom")}
           src={images.aboutTeam(1000)}
           srcSet={`${images.aboutTeam(600)} 600w, ${images.aboutTeam(1000)} 1000w`}
           sizes="(min-width: 1024px) 560px, 100vw"
@@ -27,13 +29,13 @@ export const AboutSection = () => (
           loading="lazy"
           className="aspect-[4/3] w-full rounded-xl object-cover lg:aspect-[4/5]"
         />
-        <div className="absolute -bottom-5 left-5 right-5 rounded-lg bg-white px-5 py-4 shadow-[0_12px_30px_rgba(20,24,32,0.12)] sm:right-auto">
+        <div {...reveal(450)} className="absolute -bottom-5 left-5 right-5 rounded-lg bg-white px-5 py-4 shadow-[0_12px_30px_rgba(20,24,32,0.12)] sm:right-auto">
           <p className="font-display text-sm font-bold text-ink">Software · Web · Systems · Support</p>
           <p className="text-[13px] text-muted-foreground">One team from first idea to everyday use</p>
         </div>
       </div>
 
-      <div className="pt-6 lg:pt-0">
+      <div className="pt-6 lg:pt-0" {...reveal(150)}>
         <span className="eyebrow">Who we are</span>
         <h2 className="section-title mt-4">A software company that learns how your business works first.</h2>
         <p className="mt-5 text-[16.5px] leading-relaxed text-ink/75">
@@ -48,7 +50,7 @@ export const AboutSection = () => (
 
         <ol className="mt-8 divide-y divide-border border-y border-border">
           {points.map((p, i) => (
-            <li key={p.title} className="grid grid-cols-[44px_1fr] gap-3 py-5">
+            <li key={p.title} className="grid grid-cols-[44px_1fr] gap-3 py-5" {...reveal(250 + i * 110)}>
               <span className="font-display text-sm font-bold text-amber">0{i + 1}</span>
               <div>
                 <h3 className="text-[17px] font-bold text-ink">{p.title}</h3>

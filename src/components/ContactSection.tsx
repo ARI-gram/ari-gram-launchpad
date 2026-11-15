@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { reveal } from "@/lib/reveal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -99,7 +100,7 @@ export const ContactSection = () => {
       <div className="relative overflow-hidden bg-coal text-white">
         <img src={images.nairobi(1920)} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
         <div className="photo-overlay absolute inset-0" />
-        <div className="wrap relative py-20 lg:py-24">
+        <div className="wrap relative py-20 lg:py-24" {...reveal()}>
           <span className="eyebrow">Let's talk</span>
           <h2 className="mt-4 max-w-[640px] text-[34px] font-extrabold leading-[1.1] md:text-[46px]">
             Let's build something better.
@@ -118,7 +119,7 @@ export const ContactSection = () => {
 
       {/* Contact details + form */}
       <div id="quote" className="wrap mt-16 grid gap-12 lg:mt-20 lg:grid-cols-[1fr_1.3fr] lg:gap-16">
-        <div>
+        <div {...reveal()}>
           <h3 className="text-2xl font-extrabold text-ink">Request a quote</h3>
           <p className="mt-3 text-muted-foreground">
             Share a few details about your project or the problem you need solved. We usually reply within one working day.
@@ -150,6 +151,7 @@ export const ContactSection = () => {
         </div>
 
         <form
+          {...reveal(150)}
           className="space-y-5 rounded-xl border border-border bg-sand p-6 md:p-8"
           onSubmit={(e) => {
             e.preventDefault();
