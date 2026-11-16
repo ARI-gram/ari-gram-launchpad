@@ -1,91 +1,74 @@
-import { Phone, Mail, Github, Linkedin, Twitter } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Logo } from "./Logo";
 
-export const Footer = () => {
-  const currentYear = new Date().getFullYear();
+const columns = [
+  {
+    title: "Company",
+    links: [
+      { label: "About", href: "/about" },
+      { label: "Our Work", href: "/work" },
+      { label: "Industries", href: "/industries" },
+      { label: "Contact", href: "/contact" },
+    ],
+  },
+  {
+    title: "Services",
+    links: [
+      { label: "Software Development", href: "/services#software" },
+      { label: "Web Solutions", href: "/services#web" },
+      { label: "Business Systems", href: "/services#systems" },
+      { label: "Digital Creative", href: "/services#creative" },
+    ],
+  },
+];
 
-  return (
-    <footer className="border-t border-border py-12">
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-3 gap-8">
-          {/* Brand */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <span className="text-2xl font-bold text-gradient">ARI-gram</span>
-              <span className="text-sm font-mono text-muted-foreground">Technologies</span>
-            </div>
-            <p className="text-sm text-muted-foreground max-w-xs">
-              Building, automating, and fixing software systems for businesses and individuals.
-            </p>
-          </div>
-
-          {/* Quick Links */}
-          <div className="space-y-4">
-            <h4 className="font-semibold">Quick Links</h4>
-            <div className="flex flex-col gap-2">
-              <a href="#about" className="text-sm text-muted-foreground hover:text-primary transition-colors">About</a>
-              <a href="#services" className="text-sm text-muted-foreground hover:text-primary transition-colors">Services</a>
-              <a href="#process" className="text-sm text-muted-foreground hover:text-primary transition-colors">Process</a>
-              <a href="#portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors">Portfolio</a>
-              <a href="#contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">Contact</a>
-            </div>
-          </div>
-
-          {/* Contact */}
-          <div className="space-y-4">
-            <h4 className="font-semibold">Contact</h4>
-            <div className="space-y-2">
-              <a 
-                href="https://wa.me/254726875878" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Phone className="w-4 h-4" />
-                <span className="font-mono">0726875878</span>
-              </a>
-              <a 
-                href="mailto:ari.gram.technologies@gmail.com"
-                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Mail className="w-4 h-4" />
-                <span className="font-mono">ari.gram.technologies@gmail.com</span>
-              </a>
-            </div>
-
-            {/* Social Links */}
-            <div className="flex gap-4 pt-2">
-              <a 
-                href="#" 
-                className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-colors"
-              >
-                <Github className="w-5 h-5" />
-              </a>
-              <a 
-                href="#" 
-                className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-colors"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a 
-                href="#" 
-                className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-colors"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
-            </div>
-          </div>
+export const Footer = () => (
+  <footer className="bg-coal pb-8 pt-16 text-[14.5px] text-white/60">
+    <div className="wrap">
+      <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr_1.2fr]">
+        <div>
+          <Logo variant="light" />
+          <p className="mt-4 max-w-[280px]">
+            Technology. Innovation. Progress.
+            <br />
+            Business software and digital solutions.
+          </p>
         </div>
-
-        {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">
-            © {currentYear} ARI-gram Technologies. All rights reserved.
-          </p>
-          <p className="text-xs text-muted-foreground font-mono">
-            Built with passion in Kenya 🇰🇪
-          </p>
+        {columns.map((col) => (
+          <div key={col.title}>
+            <h4 className="mb-4 font-display text-sm font-bold text-white">{col.title}</h4>
+            <ul className="space-y-2">
+              {col.links.map((l) => (
+                <li key={l.label}>
+                  <Link to={l.href} className="transition-colors hover:text-white">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+        <div>
+          <h4 className="mb-4 font-display text-sm font-bold text-white">Contact</h4>
+          <ul className="space-y-2">
+            <li>
+              <a href="https://wa.me/254726875878" target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                WhatsApp +254 726 875 878
+              </a>
+            </li>
+            <li>
+              <a href="mailto:ari.gram.technologies@gmail.com" className="break-all hover:text-white">
+                ari.gram.technologies@gmail.com
+              </a>
+            </li>
+            <li>Kenya</li>
+          </ul>
         </div>
       </div>
-    </footer>
-  );
-};
+      <div className="mt-12 flex flex-wrap justify-between gap-2 border-t border-white/10 pt-6 text-[13px]">
+        <span>© {new Date().getFullYear()} ARI-GRAM Technologies. All rights reserved.</span>
+        <span>Built in Kenya</span>
+      </div>
+    </div>
+  </footer>
+);

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ARI-GRAM mark">
+  <!-- Left leg: deep navy -->
+  <polygon points="4,58 27,5 37,5 16,58" fill="#092B59"/>
+  <!-- Right leg: corporate blue, split from the apex -->
+  <polygon points="39,9 60,58 48,58 34,21" fill="#1256A0"/>
+  <!-- Crossbar: electric blue connection line with a node -->
+  <rect x="19" y="39" width="22" height="7" rx="3.5" fill="#168BFA"/>
+  <circle cx="47" cy="42.5" r="4.5" fill="#168BFA"/>
+</svg>

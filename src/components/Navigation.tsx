@@ -1,92 +1,107 @@
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Logo } from "./Logo";
 
+/** Main menu: every item is its own page. */
 const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#services", label: "Services" },
-  { href: "#process", label: "Process" },
-  { href: "#portfolio", label: "Portfolio" },
-  { href: "#contact", label: "Contact" },
+  { to: "/about", label: "About" },
+  { to: "/services", label: "Services" },
+  { to: "/solutions", label: "Solutions" },
+  { to: "/industries", label: "Industries" },
+  { to: "/work", label: "Our Work" },
+  { to: "/contact", label: "Contact" },
 ];
 
 export const Navigation = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const { pathname } = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => setOpen(false), [pathname]);
+
+  const isActive = (to: string) => !to.includes("#") && pathname === to;
+
   return (
-    <nav
+    <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled ? "glass py-3" : "bg-transparent py-6"
+        "sticky top-0 z-50 border-b bg-white/95 backdrop-blur transition-shadow",
+        scrolled ? "border-border shadow-[0_1px_12px_rgba(20,24,32,0.06)]" : "border-transparent",
       )}
     >
-      <div className="container mx-auto px-4 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2">
-          <span className="text-2xl font-bold text-gradient-premium">ARI-gram</span>
-          <span className="text-sm font-mono text-gold/70 hidden sm:inline">
-            Technologies
-          </span>
-        </a>
+      <div className="wrap flex h-[68px] items-center justify-between">
+        <Link to="/" aria-label="ARI-GRAM Technologies home">
+          <Logo />
+        </Link>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm font-medium"
-            >
-              {link.label}
-            </a>
-          ))}
-          <Button variant="hero" size="sm" asChild>
-            <a href="#contact">Get Started</a>
-          </Button>
-        </div>
+        <nav className="hidden lg:block" aria-label="Main">
+          <ul className="flex items-center gap-7 text-[14.5px] font-medium text-ink/70">
+            {navLinks.map((l) => (
+              <li key={l.to}>
+                <Link
+                  to={l.to}
+                  aria-current={isActive(l.to) ? "page" : undefined}
+                  className={cn(
+                    "nav-link transition-colors hover:text-ink",
+                    isActive(l.to) && "font-semibold text-ink after:scale-x-100",
+                  )}
+                >
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-        {/* Mobile Menu Button */}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="md:hidden"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        <Link to="/contact#form" className="btn btn-primary hidden lg:inline-flex">
+          Get a Quote
+        </Link>
+
+        <button
+          type="button"
+          className="grid h-10 w-10 place-items-center rounded-lg border border-border lg:hidden"
+          onClick={() => setOpen((o) => !o)}
+          aria-expanded={open}
+          aria-label={open ? "Close menu" : "Open menu"}
         >
-          {isMobileMenuOpen ? <X /> : <Menu />}
-        </Button>
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
       </div>
 
-      {/* Mobile Navigation */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden glass mt-2 mx-4 rounded-xl p-4 animate-scale-in">
-          <div className="flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm font-medium py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {link.label}
-              </a>
+      {open && (
+        <div className="border-t border-border bg-white lg:hidden">
+          <ul className="wrap flex flex-col py-3">
+            {navLinks.map((l) => (
+              <li key={l.to}>
+                <Link
+                  to={l.to}
+                  onClick={() => setOpen(false)}
+                  aria-current={isActive(l.to) ? "page" : undefined}
+                  className={cn(
+                    "block border-b border-border/70 py-3 font-medium text-ink/80",
+                    isActive(l.to) && "font-semibold text-ink",
+                  )}
+                >
+                  {l.label}
+                </Link>
+              </li>
             ))}
-            <Button variant="hero" size="sm" asChild>
-              <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
-                Get Started
-              </a>
-            </Button>
-          </div>
+            <li className="pt-4">
+              <Link to="/contact#form" onClick={() => setOpen(false)} className="btn btn-primary w-full">
+                Get a Quote
+              </Link>
+            </li>
+          </ul>
         </div>
       )}
-    </nav>
+    </header>
   );
 };

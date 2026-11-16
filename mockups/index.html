@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Homepage mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; background: #E9EEF5; font-family: Manrope, system-ui, sans-serif; color: #0B1B33; }
+  .top { padding: 24px 16px 8px; max-width: 1500px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 12px; }
+  .top h1 { margin: 0; font-size: 22px; font-weight: 800; color: #092B59; }
+  .top p { margin: 4px 0 0; color: #64748B; font-size: 14px; }
+  .top a { font-weight: 600; font-size: 14px; color: #1256A0; }
+  .board { display: flex; gap: 32px; align-items: flex-start; padding: 16px; max-width: 1500px; margin: 0 auto; overflow-x: auto; }
+  figure { margin: 0; flex: none; }
+  figcaption { font-weight: 600; font-size: 13px; color: #64748B; margin-bottom: 10px; }
+  .dev { background: #0B1B33; padding: 10px; border-radius: 14px; box-shadow: 0 20px 40px rgba(9,43,89,.18); }
+  .dev.phone { border-radius: 30px; padding: 12px; }
+  .vp { overflow: hidden; background: #fff; border-radius: 6px; position: relative; }
+  .phone .vp { border-radius: 20px; }
+  iframe { border: 0; transform-origin: 0 0; display: block; }
+</style>
+</head>
+<body>
+<div class="top">
+  <div>
+    <h1>ARI-GRAM Technologies · Homepage mockup</h1>
+    <p>White &amp; deep blue · Geometric A logo · the same page shown at desktop, tablet and phone widths.</p>
+  </div>
+  <div><a href="homepage.html" target="_blank">Open full page ↗</a> · <a href="logo-sheet.html" target="_blank">Logo sheet ↗</a></div>
+</div>
+<div class="board">
+  <figure><figcaption>Desktop · 1440px</figcaption><div class="dev"><div class="vp" data-w="1440" data-s="0.42"></div></div></figure>
+  <figure><figcaption>Tablet · 820px</figcaption><div class="dev"><div class="vp" data-w="820" data-s="0.42"></div></div></figure>
+  <figure><figcaption>Phone · 390px</figcaption><div class="dev phone"><div class="vp" data-w="390" data-s="0.62"></div></div></figure>
+</div>
+<script>
+  const PAGE = (new URLSearchParams(location.search).get('page') || 'homepage') + '.html';
+  const NAME = { homepage: 'Homepage', about: 'About Us', services: 'Services', solutions: 'Solutions', industries: 'Industries', work: 'Our Work', contact: 'Contact' }[PAGE.replace('.html','')] || PAGE;
+  document.querySelector('.top h1').textContent = 'ARI-GRAM Technologies · ' + NAME + ' mockup';
+  document.querySelector('.top a').href = PAGE;
+  document.querySelectorAll('.vp').forEach(vp => {
+    const w = +vp.dataset.w, s = +vp.dataset.s;
+    const f = document.createElement('iframe');
+    f.src = PAGE; f.width = w; f.height = 900; f.scrolling = 'no';
+    f.style.transform = `scale(${s})`;
+    vp.style.width = (w * s) + 'px'; vp.style.height = (900 * s) + 'px';
+    vp.appendChild(f);
+    const fit = () => {
+      try {
+        const h = f.contentDocument.documentElement.scrollHeight;
+        f.height = h; vp.style.height = (h * s) + 'px';
+      } catch (e) { /* cross-origin: keep default height */ }
+    };
+    f.addEventListener('load', () => { fit(); setTimeout(fit, 800); });
+  });
+</script>
+</body>
+</html>

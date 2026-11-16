@@ -2,23 +2,31 @@ import { Navigation } from "@/components/Navigation";
 import { HeroSection } from "@/components/HeroSection";
 import { AboutSection } from "@/components/AboutSection";
 import { ServicesSection } from "@/components/ServicesSection";
-import { ProcessSection } from "@/components/ProcessSection";
+import { SolutionsSection } from "@/components/SolutionsSection";
+import { IndustriesSection } from "@/components/IndustriesSection";
 import { PortfolioSection } from "@/components/PortfolioSection";
+import { ProcessSection } from "@/components/ProcessSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
+import { useReveal } from "@/hooks/use-reveal";
 
 const Index = () => {
+  useReveal();
   return (
-    <main className="min-h-screen bg-background">
-      <Navigation />
+  <>
+    <Navigation />
+    <main>
       <HeroSection />
       <AboutSection />
       <ServicesSection />
-      <ProcessSection />
+      <SolutionsSection />
+      <IndustriesSection />
       <PortfolioSection />
+      <ProcessSection />
       <ContactSection />
-      <Footer />
     </main>
+    <Footer />
+  </>
   );
 };
 
