@@ -3,7 +3,8 @@
  * The IDs below are EmailJS's public browser keys (safe to ship in front-end code).
  * Used by the quote form on the homepage and the early-access form on Solutions.
  */
-const EMAILJS_SERVICE_ID = "service_s8yjkli";
+// Gmail service connected as ari.gram.technologies@gmail.com (EmailJS dashboard → Email Services).
+const EMAILJS_SERVICE_ID = "service_ekk1pyf";
 const EMAILJS_TEMPLATE_ID = "template_5k5la8l";
 const EMAILJS_PUBLIC_KEY = "7ByFLFdrTxP2BF5wv";
 const INBOX = "ari.gram.technologies@gmail.com";
